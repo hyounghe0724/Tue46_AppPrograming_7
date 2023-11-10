@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        // crolled data read using ajax
+       const read_data_school_schedule = (month) =>{
+            let Temp;
+
+            $.ajax({
+                url: 'crolled.php',
+                type: 'get',
+                dataType: 'json',
+                async:  false,
+                success: function (data){
+                    Temp = data[month];
+                },
+                error: function (e){
+                    alert(e);
+                }
+
+            })
+           return Temp;
+       };
+     // crolled data read using ajax
+    </script>
 </head>
 <body>
+    <!-- 추후에 버튼(매개변수) -> 함수 -> 데이터 ajax read 수정 예정 -->
+    <p><script>document.write(read_data_school_schedule(1))</script></p>
 
 </body>
 </html>
