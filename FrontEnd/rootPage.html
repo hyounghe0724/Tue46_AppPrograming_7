@@ -5,31 +5,49 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
-        // crolled data read using ajax
-       const read_data_school_schedule = (month) =>{
-            let Temp;
+        // cralled data read using ajax
+       const read_data_school_schedule = (month) => {
+           let monthSchedule = document.querySelector("#monthSchedule");
+           if (monthSchedule.firstChild !== null) {
+               monthSchedule.removeChild(monthSchedule.firstChild);
+           }
+           let doc;
 
-            $.ajax({
-                url: 'crolled.php',
-                type: 'get',
-                dataType: 'json',
-                async:  false,
-                success: function (data){
-                    Temp = data[month];
-                },
-                error: function (e){
-                    alert(e);
-                }
+           $.ajax({
+               url: 'crawl.php',
+               type: 'get',
+               dataType: 'json',
+               async: false,
+               success: function (data) {
 
-            })
-           return Temp;
-       };
+                   var parser = new DOMParser();
+                   doc = parser.parseFromString(data, 'text/html').querySelector('ul').getElementsByTagName('li');
+               },
+               error: function(data) {
+                   console.log(data);
+               }
+           });
+
+           return monthSchedule.appendChild(doc[month -1]);
+       }
      // crolled data read using ajax
     </script>
 </head>
 <body>
-    <!-- 추후에 버튼(매개변수) -> 함수 -> 데이터 ajax read 수정 예정 -->
-    <p><script>document.write(read_data_school_schedule(1))</script></p>
 
+    <button onclick="read_data_school_schedule(1)">1</button>
+    <button onclick="read_data_school_schedule(2)">2</button>
+    <button onclick="read_data_school_schedule(3)">3</button>
+    <button onclick="read_data_school_schedule(4)">4</button>
+    <button onclick="read_data_school_schedule(5)">5</button>
+    <button onclick="read_data_school_schedule(6)">6</button>
+    <button onclick="read_data_school_schedule(7)">7</button>
+    <button onclick="read_data_school_schedule(8)">8</button>
+    <button onclick="read_data_school_schedule(9)">9</button>
+    <button onclick="read_data_school_schedule(10)">10</button>
+    <button onclick="read_data_school_schedule(11)">11</button>
+    <button onclick="read_data_school_schedule(12)">12</button>
+
+<div id="monthSchedule"></div>
 </body>
 </html>
