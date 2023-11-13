@@ -30,11 +30,34 @@
            return monthSchedule.appendChild(doc[month -1]);
        }
 
+
        window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
            const date = new Date();
            read_data_school_schedule(date.getMonth() + 1);
        });
      // crolled data read using ajax
+    </script>
+    <script>
+        // textarea ajax로 받아오기 
+
+        function read_data_todolist(){
+            var Temp;
+
+            $.ajax({
+                url: 'samplecode.php',
+                type: 'get',
+                dataType: 'json',
+                async:  false,
+                success: function (data){
+                    Temp = data.memo
+                },
+                error: function (e){
+                    alert(e);
+                }
+
+            })
+           return Temp;
+       };
     </script>
     <script>
         var selectedMonthElement = null;
