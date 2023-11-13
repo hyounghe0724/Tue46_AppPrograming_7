@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.wrap-footer .footer-jump { width:320px; padding-left: 20px;}
+.wrap-footer .footer-jump > div {position:relative;}
+.wrap-footer .footer-jump .default-jump {float:left; width:78%; height:64px; padding:0 20px; background:#3d4146 url('/sites/skukr/images/common/arrow-jump-open.png') no-repeat right center; line-height:64px; font-size:17px; text-align:left; color:#fff;}
+.wrap-footer .footer-jump .default-jump a {font-family: 'Noto Light'; color:#fff;}
+.wrap-footer .footer-jump .go-btn {float:left; width:22%; height:64px; background:#295ca4 url('/sites/skukr/images/common/arrow-jump.png') no-repeat center center; text-indent: -9999px; transition: .4s}
+.wrap-footer .footer-jump .go-btn:hover {background-color: #1e4691;}
+.wrap-footer .footer-jump .jump-menu-list {overflow:hidden; max-height:0px; position:absolute; bottom:9px; left:0px; width:78%; margin: 0 0 -10px 0; transition: max-height 0.8s ease;}
+.wrap-footer .footer-jump .jump-menu-list.on {overflow: auto; max-height: 430px; transition: max-height 0.8s ease;}
+.wrap-footer .footer-jump .jump-menu-list ul {background:#2b3543; border:1px solid #3c4654; border-bottom:0px;}
+.wrap-footer .footer-jump .jump-menu-list a {cursor:pointer; padding:10px 15px; border-bottom:1px solid #3c4654; display:block; color:#fff; font-size:15px;}

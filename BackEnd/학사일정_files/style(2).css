@@ -1,0 +1,24 @@
+#menu160_obj5456 ._fnctWrap.video_fnctWrap video{width: 100vw; height: 100vh;object-fit: cover;}
+@media all and (max-width: 1300px) {
+  #menu160_obj5456 ._fnctWrap.video_fnctWrap video{height: auto;}
+}
+/*
+	보기 처리의 경우, display: block;
+    숨김 처리의 경우, display: none;
+*/
+/*영상*/
+#menu160_obj5456 ._fnctWrap.video_fnctWrap{display: block;}
+/*이미지 슬라이드*/
+#menu160_obj5456 ._fnctWrap.imgSlide_fnctWrap{display: none;}
+/*슬로건(문구)*/
+#menu160_obj7{display: block;}
+
+.video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;}
+.video-container iframe,
+.video-container object,
+.video-container embed {position:absolute; top:0; left:0; width:100%; height:100%;}
+
+.wrap-notice .tab-list.on .more {
+    display: block;
+    z-index: 11;
+}

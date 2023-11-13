@@ -1,0 +1,227 @@
+	$(function() {
+		$("a[onclick*='moveTab(']").click(function(event) {
+			event.preventDefault();
+		});
+	});
+
+	var SCHDUL_TYPE = {
+		  YEAR : "YEAR", 
+		  HALF : "HALF", 
+		  MONTH: "MONTH", 
+		  WEEK : "WEEK", 
+		  DAY  : "DAY"
+		};
+	
+	function monthView(str){
+		$("#month").val(str);
+		moveTab('', SCHDUL_TYPE.MONTH);
+	}
+	
+	function moveTab(kind, type, t) {
+		//event.preventDefault();
+		var siteId = $("#siteId").val();
+		var fnctNo = $("#fnctNo").val();
+		var year = $("#year").val();
+		var month = $("#month").val();
+		var view = '';
+		var data = {};
+		
+		if(kind == 'N') {
+			year = null;
+			month = null;
+		}
+		
+		if(type == SCHDUL_TYPE.YEAR) {
+			view = "yearSchdul";
+			data = {"kind":kind, "year":year};
+		}else if(type == SCHDUL_TYPE.HALF) {
+			view = "halfSchdul";
+			data = {"kind":kind, "year":year, "half":$("#half").val()};
+		}else if(type == SCHDUL_TYPE.MONTH) {
+			view = "monthSchdul";
+			data = {"kind":kind, "year":year, "month":month};
+		}else if(type == SCHDUL_TYPE.WEEK) {
+			view = "wikSchdul";
+			data = {"kind":kind, "year":year, "month":month, "sunday":$("#sunday").val()};
+		}else if(type == SCHDUL_TYPE.DAY) {
+			view = "dailSchdul";
+			var searchDay = '';
+			
+			// 일간 -> 일간
+			if(typeof t == "string") {
+				searchDay = t;
+			// 주간 -> 일간
+			}else if($(t).find("input[name='day']").length == 0) {
+				day = trim($(t).html());
+				if(month < 10){
+					month = "0" + month;
+				}
+				if(day < 10){
+					day = "0" + day;
+				}
+				searchDay = year+"-"+month+"-"+day;
+				if(day.length > 2) searchDay = null;
+			// 월간 -> 일간
+			}else {
+				searchDay = $(t).find(".searchDay").val();
+			}
+			
+			data = {"searchDay":searchDay, "year":year};
+			$("#dayTab").closest("ul").find("a").removeClass("active");
+			$("#dayTab").addClass("active");
+		}
+		
+		$.ajax({
+			type:"POST",
+			url:kurl("/schdulmanage/" + siteId + "/" + fnctNo + "/" + view),
+			sync:false,
+			data:data,
+			cache:false,
+			success:function(d){
+				$("#schdulWrap").html(d);
+			},
+			/* beforeSend:function(){
+				var message = '<br><br><img src="/Web-home/_UI/images/guide/loading.gif"><h1>Loading</h1><br><br>';
+				$.blockUI({
+					message: message,
+					css: {
+						"border": "none",
+						"backgroundColor": "#fff",
+						"border-radius": "5px",
+						"-webkit-border-radius": "5px",
+						"-moz-border-radius": "5px",
+						opacity: .9
+					}
+				});
+		    },
+		    complete:function(){
+		    	$.unblockUI();
+		    } */
+		});	
+		
+		if(type != SCHDUL_TYPE.MONTH) {
+			$(".etcTab").addClass("hidden");
+		}else {
+			$(".etcTab").removeClass("hidden");
+		}
+		
+		$(t).closest("ul").find("a").removeClass("active");
+		$(t).addClass("active");
+	} 
+	
+	$(document).on("change", "#selMonth", function(){
+		$("#month").val($("#selMonth").val());
+		moveTab('', SCHDUL_TYPE.MONTH);
+	})
+	
+	$(document).on("keypress", "#year", function(e){
+		if(e.keyCode < 48 || e.keyCode > 57){
+			return false;
+		}
+	})
+	
+	function set_layer(schdulManageArtclSeq, siteId, fnctNo){
+		$.ajax({
+			type:"POST",
+			url:kurl("/schdulmanage/"+siteId+"/"+fnctNo+"/"+schdulManageArtclSeq+"/schdulManageArtclLayer"),
+			sync:false,
+			cache:false,
+			success:function(d){
+				$("#layer_planner").html(d);
+				if(d.status == 1){
+					check = true;
+				}
+			},
+			error:function(){
+				alert('ERROR');
+			}
+		});	
+	}
+	
+	$(document).on("click", ".onDate", function(){
+		var L = ($("#_JW_schdulmanage_basic").width()/2)-250;
+	//	var T = ($("#_JW_schdulmanage_basic").height()/2)-100;
+		var T = $(document).scrollTop();
+
+		//$("#layer_planner").attr('style','top:'+T+'px;left:'+L+'px;');
+		
+		$("#layer_planner").show();
+		return false;
+	});
+	
+	$(document).on("change", ".searchSelect #searchDay", function(){
+		moveTab('', SCHDUL_TYPE.DAY, $(this).val());
+	});
+	$(document).on("focusout", ".moveYear #year", function(){
+		moveTab('', SCHDUL_TYPE.MONTH, $(this).val());
+	});
+	
+	$(document).on("focus", "#searchDay", function () {
+		if( $( "#searchDay" ).size() > 0 ) {
+			$( "#searchDay" ).datepicker({
+				inline: true, 
+				dateFormat: "yy-mm-dd",    /* �궇吏� �룷留� */ 
+				prevText: 'PREV', 
+				nextText: 'NEXT', 
+				showButtonPanel: true,    /* 踰꾪듉 �뙣�꼸 �궗�슜 */ 
+				changeMonth: true,        /* �썡 �꽑�깮諛뺤뒪 �궗�슜 */ 
+				changeYear: true,        /* �뀈 �꽑�깮諛뺤뒪 �궗�슜 */ 
+				showOtherMonths: true,    /* �씠�쟾/�떎�쓬 �떖 �씪�닔 蹂댁씠湲� */ 
+				selectOtherMonths: true,    /* �씠�쟾/�떎�쓬 �떖 �씪 �꽑�깮�븯湲� */ 
+				//showOn: "button", 
+				//buttonImage: "img/calendar03.gif", 
+				//buttonImageOnly: true, 
+				minDate: '-30y', 
+				closeText: 'X', 
+				currentText: 'TODAY', 
+				showMonthAfterYear: true,        /* �뀈怨� �떖�쓽 �쐞移� 諛붽씀湲� */ 
+				monthNames : ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'], 
+				monthNamesShort : ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],  
+				//dayNames : ['�씪', '�썡', '�솕', '�닔', '紐�', '湲�', '�넗'],
+				//dayNamesShort : ['�씪', '�썡', '�솕', '�닔', '紐�', '湲�', '�넗'],
+				//dayNamesMin : ['�씪', '�썡', '�솕', '�닔', '紐�', '湲�', '�넗'],
+				showAnim: 'slideDown'
+			});
+		}
+	});
+
+	$(document).ready(function () {
+		$('.switch-btn a').click(function () {
+			$(this).toggleClass('ac');
+		});
+	});
+	
+	$(function() {
+		$(".switch-btn li").children("a").click(function() {
+			$(".switch-btn li a").removeClass("ac");
+			$(this).addClass("ac");
+	
+			if ($(".view-album").hasClass("ac")) {
+				$(".sche-list").removeClass("ac");
+				$(".sche-alb").addClass("ac");
+			} else {
+				$(".sche-alb").removeClass("ac");
+				$(".sche-list").addClass("ac");
+			}
+		});
+	
+		$(".alb-head .btm ul li a").click(function() {
+			$(".alb-head .btm ul li a").removeClass();
+			$(this).addClass("ac");
+		});
+
+		var btnSchGuide = $('.btn-sch-guide');
+		var boxSchGuide  = $('.sch-guide-layer');
+		var btnSchCose = $('.btn-sch-close');
+		var $blackBg2 = $('.black-bg2');
+		
+		btnSchGuide.on('click',function(){
+		   boxSchGuide.addClass('on');
+		  $blackBg2.addClass('on');
+		});
+		 btnSchCose.on('click',function(){
+		   boxSchGuide.removeClass('on');
+		   $blackBg2.removeClass('on');
+		});
+	
+	});

@@ -5,8 +5,7 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
-        // cralled data read using ajax
-       const read_data_school_schedule = (month) => {
+       const read_data_school_schedule = (month) => { // html parsing and ajax send
            let monthSchedule = document.querySelector("#monthSchedule");
            if (monthSchedule.firstChild !== null) {
                monthSchedule.removeChild(monthSchedule.firstChild);
@@ -30,11 +29,57 @@
 
            return monthSchedule.appendChild(doc[month -1]);
        }
+
+       window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
+           const date = new Date();
+           read_data_school_schedule(date.getMonth() + 1);
+       });
      // crolled data read using ajax
+    </script>
+    <script>
+        var selectedMonthElement = null;
+
+        function selectMonth(month) {
+            if (selectedMonthElement) {
+                selectedMonthElement.classList.remove("selectedMonth");
+            }
+
+            selectedMonthElement = document.querySelector("#monthList li:nth-child(" + month + ")");
+            selectedMonthElement.classList.add("selectedMonth");
+        }
+
+        function showSchedule() {
+            var month = selectedMonthElement.textContent;
+            var date = document.getElementById("monthSelect").value;
+            var schedule = document.getElementById("scheduleInput").value;
+
+            var outputDiv = document.getElementById("output");
+
+            // 테이블 생성
+            var table = document.createElement("table");
+            table.style.width = "100%";
+
+            // 헤더 추가
+            var headerRow = table.insertRow(0);
+            var dateHeader = headerRow.insertCell(0);
+            dateHeader.innerHTML = "선택한 날짜";
+            var scheduleHeader = headerRow.insertCell(1);
+            scheduleHeader.innerHTML = "일정 및 메모";
+
+            // 데이터 추가
+            var dataRow = table.insertRow(1);
+            var dateCell = dataRow.insertCell(0);
+            dateCell.innerHTML = month + " " + date + "일";
+            var scheduleCell = dataRow.insertCell(1);
+            scheduleCell.innerHTML = schedule;
+
+            // 기존 내용 지우고 새로운 테이블 추가
+            outputDiv.innerHTML = "";
+            outputDiv.appendChild(table);
+        }
     </script>
 </head>
 <body>
-
     <button onclick="read_data_school_schedule(1)">1</button>
     <button onclick="read_data_school_schedule(2)">2</button>
     <button onclick="read_data_school_schedule(3)">3</button>
@@ -48,6 +93,24 @@
     <button onclick="read_data_school_schedule(11)">11</button>
     <button onclick="read_data_school_schedule(12)">12</button>
 
-<div id="monthSchedule"></div>
+    <div id="monthSchedule"></div>
+
+    <h2>성결대학교 ToDoList</h2>
+    <br>
+
+
+    <form action="samplecode.php" method="POST">
+        <label >날짜:</label>
+        <input type="date" name="date" required><br>
+        <label >메모:</label>
+        <textarea name="memo" rows="4" cols="50" required></textarea><br>
+        <input type="submit" value="메모 저장">
+    </form>
+    <button onclick="showSchedule()">일정 확인</button>
+
+    <div id="output"></div>
+
+
 </body>
+
 </html>

@@ -1,0 +1,161 @@
+._fnctWrap{line-height:1.5}
+#ui-datepicker-div{z-index:100!important}
+._fnctWrap ._fnctAdmin {right: auto; left: 0;}
+
+.outer{width:100%;max-width:1400px;margin:0 auto}
+.blind{overflow:hidden;position:absolute;width:1px;height:1px;margin:-1px;clip:rect(0 0 0 0)}
+.switch{text-align:right;margin-bottom:20px}
+.switch li{display:inline-block}
+.switch a{position:relative;display:block;width:45px;height:45px;text-align:left}
+.switch a.month{background:url(../images/scheduler.png) center center no-repeat}
+.switch a.month:after{content:'';position:absolute;width:1px;height:20px;right:-2px;top:13px;background-color:#ddd}
+.switch a.active.month{background:url(../images/scheduler-on.png) center center no-repeat}
+.switch a.year{background:url(../images/sche-list.png) center center no-repeat}
+.switch a.active.year{background:url(../images/sche-list-on.png) center center no-repeat}
+.switch-btn{text-align:right}
+.switch-btn li{display:inline-block}
+.switch-btn li a{position:relative;display:block;width:45px;height:45px}
+.switch-btn li:first-child a{background:url(../images/scheduler.png) center center no-repeat}
+.switch-btn li:first-child a::after{content:'';position:absolute;width:1px;height:20px;right:-2px;top:13px;background-color:#ddd}
+.switch-btn li:first-child a.ac{background:url(../images/scheduler-on.png) center center no-repeat}
+.switch-btn li:last-child a{background:url(../images/sche-list.png) center center no-repeat}
+.switch-btn li:last-child a.ac{background:url(../images/sche-list-on.png) center center no-repeat}
+
+.alb-head { margin-bottom: 70px;}
+.alb-head .inner{background-color:#fff}
+.alb-head .top{position:relative; background: url('../images/bg-sch.jpg') center top;}
+.alb-head .top h3{padding: 39px 0; color:#fff;font-size:26px;text-align:center;font-family:'Noto Medium'}
+.alb-head .top button{position:absolute;top:0;height:100%;font-family:'Noto Regular';font-size:16px;color:#fff}
+.alb-head .top button.next {right: 0; margin-right: 30px; padding-right: 40px;}
+.alb-head .top button.prev {left: 0; margin-left: 30px; padding-left: 40px;}
+.alb-head .top button:after {content: ''; position: absolute; top: 50%; width: 30px; height: 30px; margin-top: -15px;}
+.alb-head .top button.next:after{right: 0; background: url('../images/arrow-next.png') no-repeat center center;}
+.alb-head .top button.prev:after{left: 0; background: url('../images/arrow-prev.png') no-repeat center center}
+.alb-head .btm{border:5px solid #eaeaea; border-top: 0; padding:15px 0}
+.alb-head .btm ul{padding:0 50px;overflow:hidden}
+.alb-head .btm ul li{float:left;width:calc(100% / 12);text-align:center}
+.alb-head .btm ul li a{display:inline-block;color:#666;font-size:20px;border-radius:12px;background-color:#fff;padding:5px 15px;transition:ease-in-out .2s;font-family:'Noto Light'}
+.alb-head .btm ul li a:hover,.alb-head .btm ul li a.ac{color:#fff;background-color:#0e4789}
+
+.sche-alb .alb-body{overflow:hidden}
+.sche-alb .alb-body .sche-tab{float:left;width:26.5%;border:1px solid #ccc;}
+.sche-alb .alb-body .sche-tab strong{display:inline-block;width:100%;background: #18327c;font-size:18px;text-align:center;margin: 0;padding:19px 10px;box-sizing:border-box;font-family:'Noto Bold'; color: #fff;}
+.sche-alb .alb-body .sche-tab thead tr{background-color:#9e9e9e}
+.sche-alb .alb-body .sche-tab th{color:#fff;padding:10px 0;font-family:'Noto Bold';font-size:14px}
+.sche-alb .alb-body .sche-tab td{padding:8px 5px; font-size: 14px;}
+.sche-alb .alb-body .sche-tab td:first-child p{color:#ff1800}
+.sche-alb .alb-body .sche-tab td:last-child p{color:#004fd2}
+.sche-alb .alb-body .sche-tab td p{display:inline-block;width:30px;height:30px;line-height:29px;border-radius:50%;background-color:#fff;margin:0 auto;font-family:'Noto Light'; color: #666;}
+.sche-alb .alb-body .sche-tab td.marked{position:relative}
+.sche-alb .alb-body .sche-tab td.marked p{background-color:#fad58c;}
+.sche-alb .alb-body .sche-comt{float:right;width:73.5%;background: url('../images/logo-sch.png') no-repeat right bottom; padding-left: 50px;font-family:'Noto DemiLight';color:#000;}
+.sche-alb .sche-comt table {border-top:2px solid #43505d}
+.sche-alb .sche-comt th,
+.sche-alb .sche-comt td{border-right:1px solid #ccd0d7;border-bottom:1px solid #ccd0d7;padding:15px 25px; font-family: 'Noto DemiLight'; font-size: 17px;}
+.sche-alb .sche-comt th:last-child,.sche-alb .sche-comt td:last-child{border-right:0}
+.sche-alb .sche-comt th{background-color:#f9f9f9}
+.sche-alb .sche-comt td{text-align:left}
+
+.table-tail{text-align:right;margin-top:5px}
+.table-tail p{display:inline-block;color:#183d93;font-size:17px;background:url(../images/box-tail.png) left 7px no-repeat;padding:10px 0 10px 35px}
+
+.sche-list .list-body{border-top:2px solid #43505d}
+.sche-list .time-line{border-bottom:1px solid #c6cace;padding:30px 40px;overflow:hidden}
+.sche-list .time-line dt{float:left;width:25%;min-height:210px;text-align:center;background:url(../images/month-bg.png) top center no-repeat;padding-top:30px}
+.sche-list .time-line dt div{min-height:137px;background:url(../images/month-shield.png) top center no-repeat}
+.sche-list .time-line dt strong{font-size:60px;color:#fff}
+.sche-list .time-line dt span{font-size:20px;color:#fff}
+.sche-list .time-line dt p{color:#fff}
+.sche-list .time-line dd{float:right;width:75%;color:#666;border-left:1px solid #c6cace;padding-left:35px;box-sizing:border-box}
+.sche-list .time-line dd li{background:url(../images/sche-bul.png) left center no-repeat;padding-left:20px;margin:10px 0}
+.sche-list .time-line dd span{display:inline-block;width:100%;max-width:160px;color:#1b1b1b;margin-right:30px}
+
+.schedule .listDay{border-top:2px solid #43505d}
+.schedule .listDay ul{display:inline-block;width:100%}
+.schedule .listDay ul li{padding:40px 20px;border-bottom:1px solid #d9d9d9}
+.schedule .box-sch{display:table;width:100%}
+.schedule .num{display:table-cell;width:170px;vertical-align:top}
+.schedule .num h3{width:125px;height:125px;border-radius:100%;background: url('../images/bg-year.png');font-family:'Noto DemiLight';font-size:20px;text-align:center;line-height:105px;color:#fff}
+.schedule .num h3 em {font-family: 'Noto Regular'; font-size: 60px;}
+.schedule .num.day h3{font-size:18px}
+.schedule .desc{display:table-cell;vertical-align:middle; padding-left: 40px; border-left: 1px solid #c6cace;}
+.schedule .desc dl{display:table;width:100%;margin:10px 0}
+.schedule .desc dl dt{display:table-cell; padding-left: 20px; background: url('../images/arrow-year-list.png') no-repeat left 10px; font-family:'Noto DemiLight';font-size:17px;width:205px;color:#000}
+.schedule .desc dl dt.middle{vertical-align:middle;width:150px}
+.schedule .desc dl dd{display:table-cell;color:#666}
+.schedule .desc dl dt{margin-bottom:10px}
+.schedule .desc dl dt a{display:block;position:relative;padding-left:15px;margin-bottom:5px}
+.schedule .desc dl dt a:after{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;background:#3362b2;border-radius:100%}
+.schedule .desc dl dd a{display:block;position:relative;margin-bottom:5px;font-family:'Noto DemiLight'; font-size: 17px; color:#666}
+.schedule .search{text-align:center}
+.schedule strong{display:inline-block;color:#3362b2;font-size:24px;text-align:center;margin:0 20px;padding:15px 0;font-family:'Noto Medium';vertical-align:middle}
+.schedule .searchSelect label{display:inline-block;color:#3362b2;font-size:24px;text-align:center;margin:0 20px;padding:15px 0;font-family:'Noto Medium';vertical-align:middle}
+.schedule .searchSelect input{padding:10px;font-size:15px;height:40px;display:inline-block;vertical-align:middle;border-radius:4px}
+.schedule .DirectionLeft{display:inline-block;width:18px;height:23px;background-image:url(../images/box-arrow.png);text-indent:-9999px;vertical-align:middle}
+.schedule .DirectionRight{display:inline-block;width:18px;height:23px;background-image:url(../images/box-arrow.png);text-indent:-9999px;vertical-align:middle;background-position:0 23px}
+
+.sche-wrap .tab-button {margin-bottom: 15px; text-align: right;}
+.sche-wrap .tab-button ul {display: inline-block;}
+.sche-wrap .tab-button li {float: left; position: relative; padding: 0 0 0 15px; margin: 0 0 0 15px; }
+.sche-wrap .tab-button li:first-child:after {display: none;}
+.sche-wrap .tab-button li:after {content: ''; position: absolute; left: 0; top: 4px; width: 1px; height: 17px; background: #d2d2d2;}
+.sche-wrap .tab-button li a {position: relative; display: inline-block; width: 25px; height: 25px; text-align: left; text-indent: -9999px;}
+.sche-wrap .tab-button li.month a {background: url('../images/ico-month-off.png') no-repeat center center;}
+.sche-wrap .tab-button li.month a.active {background: url('../images/ico-month-on.png') no-repeat center center;}
+.sche-wrap .tab-button li.year a {background: url('../images/ico-year-off.png') no-repeat center center;}
+.sche-wrap .tab-button li.year a.active {background: url('../images/ico-year-on.png') no-repeat center center;}
+
+#layer_planner{display:none;position:fixed;left:50%;top:50%;width:90%;max-width:660px;z-index:21;transform:translate(-50%,-50%);padding:30px;background:#fff;border:1px solid #d1d1d1}
+#layer_planner.on{display:block}
+#layer_planner h1{position:absolute;left:0;top:0;width:100%;padding:25px 29px;background-image:url(../images/alert_header.png);color:#fff;font-size:21px}
+#layer_planner .btn_close{background:#2b3e5c;border:1px solid #2b3e5c;display:block;cursor:pointer;font-size:14px;height:40px;line-height:36px;text-align:center;min-width:80px;margin:0 auto;margin-top:20px;border-radius:100px;font-family:'Noto DemiLight';color:#fff}
+#layer_planner table{position:relative;margin-top:86px}
+#layer_planner table:after{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:#000}
+#layer_planner thead th{padding:14px 10px;font-family:'Noto DemiLight';font-weight:400;background:#f7f8f9;color:#000;border-right:1px solid #dddee0;border-bottom:1px solid #dddee0;font-size:18px}
+#layer_planner thead th.small{padding:15px 10px;font-size:17px}
+#layer_planner tbody th{padding:13px 15px;font-family:'Noto DemiLight';font-weight:400;background:#fbfbfb;color:#666;border-right:1px solid #dddee0;border-bottom:1px solid #ccd0d7;font-size:17px}
+#layer_planner tbody td{padding:13px 15px;font-family:'Noto Light';background:#fff;color:#666;border-bottom:1px solid #dddee0;font-size:17px;text-align:left}
+#layer_planner .list li{position:relative;padding-left:8px}
+#layer_planner .list li:after{content:'';position:absolute;left:0;top:10px;width:4px;height:4px;border-radius:100%;background:#666}
+#layer_planner .align-l{text-align:left}
+#layer_planner .align-c{text-align:center}
+#layer_planner .align-r{text-align:right}
+
+._tab{margin-bottom:30px!important}
+._tab li{margin-right:6px}
+._tab a{background:#9c9c9c!important;color:#fff!important;line-height:31px!important;border-radius:4px;border:0 solid #000}
+._tab a.active{background:#0067d4!important;color:#fff!important}
+.black-bg2{display:none;position:fixed;z-index:190;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.5)}
+.black-bg2.on{display:block}
+
+@media all and (max-width: 900px) {
+	.alb-head{margin-bottom:30px}
+	.schedule .box-sch .num h3{width:95px;height:95px;line-height:95px;margin:0 auto;margin-bottom:40px}
+	.schedule .desc {padding-left: 0; border: 0}
+	.schedule .box-sch,.schedule .box-sch .num,.schedule .box-sch .desc dl,.schedule .box-sch .desc dl dt,.schedule .box-sch .desc dl dd{display:block;width:100%}
+	.alb-head .btm ul{padding:0 25px}
+	.alb-head .btm ul li{width:calc(100% / 4)}
+	.sche-alb .alb-body .sche-tab{float:none;width:100%;margin:0 auto}
+	.sche-alb .alb-body .sche-comt{float:none;width:100%;margin-top:30px; padding-left: 0;}
+	.sche-list .time-line dt{float:none;width:100%;max-width:250px;margin:0 auto}
+	.sche-list .time-line dd{float:none;width:100%;border:1px solid #c6cace;padding:35px}
+	.sche-list .time-line{padding:30px}
+}
+
+@media all and (max-width: 600px) {
+	.alb-head .top h3 {font-size: 18px;}
+}
+
+@media all and (max-width: 500px) {
+	#layer_planner h1{font-size:17px}
+}
+
+@media all and (max-width: 450px) {
+	.alb-head .top button.next{background-position:right -102px}
+	.alb-head .top button.prev{background-position:left 21px}
+	.alb-head .btm ul{padding:0 20px}
+	.alb-head .btm ul li{width:calc(100% / 4)}
+	.alb-head .top h3{font-size:18px}
+	.sche-list .time-line{padding:20px}
+	.sche-list .time-line dd{padding:20px}
+}

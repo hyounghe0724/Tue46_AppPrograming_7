@@ -1,0 +1,12 @@
+$(function() {
+	$("#_JW_schdulmanage_basic table._fnTable tr th:first").addClass("sun");
+	$("#_JW_schdulmanage_basic table._fnTable tr th:last").addClass("sat");
+	
+	$("#_JW_schdulmanage_basic table._fnTable tr:last td").addClass("endTd");
+
+	$("#_JW_schdulmanage_basic table._fnTable tr:last th").addClass("noborder");
+	$("#_JW_schdulmanage_basic table._fnTable tr:last td").addClass("noborder");
+	$("#_JW_schdulmanage_basic dl.viewdata dd:last").addClass("noborder");
+	
+});
+

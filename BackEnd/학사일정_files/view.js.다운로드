@@ -1,0 +1,39 @@
+$(document).ready(function() {
+	// 리스트 클릭시
+	$(".footer-jump.type1 .default-jump").off("click");
+	$(".footer-jump.type1 .default-jump").on("click", function(){
+		$('.footer-jump.type1 .jump-menu-list').toggleClass('on');
+		if ($('.footer-jump.type1 .jump-menu-list').hasClass('on')) {
+			$('.footer-jump.type1 .jump-menu-list a').attr('tabindex', '');
+		} else {
+			$('.footer-jump.type1 .jump-menu-list a').attr('tabindex', '-1');
+		}
+	});
+	
+	// 주소 클릭시
+	$('.footer-jump.type1 .jump-menu-list li a').on('click', function (e) {
+		$('.footer-jump.type1 .jump-menu-list a').attr('tabindex', '-1');
+		e.preventDefault();
+		
+		$('.footer-jump.type1 .jump-menu-list').removeClass('on');
+		$('.footer-jump.type1 .default-jump a').text($(this).text());	// 텍스트
+		$('.footer-jump.type1 .default-jump a').attr("href", $(this).attr("href"))	// 주소
+		$('.footer-jump.type1 .default-jump a').attr("target", $(this).attr("target"))	// 새창 여부
+	});
+
+	// 화살표 눌렀을 경우 홈페이지 이동
+	$('.footer-jump.type1 .go-btn').on('click', function () {
+		var url = $(".footer-jump.type1 .default-jump a").attr("href");
+		var targetAttr = $(".footer-jump.type1 .default-jump a").attr("target");
+		if (url != "#none") {
+			if(targetAttr == "_self") { location.href = url}
+			else {window.open(url); }
+			return false;
+		}
+	});
+
+	// 이벤트 방지
+	$('.footer-jump.type1 .default-jump a').on('click', function (e) {
+		e.preventDefault();
+	});
+});

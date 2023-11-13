@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+@page{size:1800px;margin:0}
+
+@media print {
+    .wrap-header,.wrap-sub-visual,.wrap-sub-navi,.wrap-footer,.wrap-page-top{display:none}
+}

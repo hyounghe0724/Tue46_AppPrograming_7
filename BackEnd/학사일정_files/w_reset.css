@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+@font-face{font-family:'Noto Thin';font-style:normal;src:url(/Web-home/_UI/font/noto/NotoSans-Thin.woff2) format("woff2"),url(/Web-home/_UI/font/noto/NotoSans-Thin.woff) format("woff")}
+@font-face{font-family:'Noto Light';font-style:normal;src:url(/Web-home/_UI/font/noto/NotoSans-Light.woff2) format("woff2"),url(/Web-home/_UI/font/noto/NotoSans-Light.woff) format("woff")}
+@font-face{font-family:'Noto DemiLight';font-style:normal;src:url(/Web-home/_UI/font/noto/NotoSans-DemiLight.woff2) format("woff2"),url(/Web-home/_UI/font/noto/NotoSans-DemiLight.woff) format("woff")}
+@font-face{font-family:'Noto Regular';font-style:normal;src:url(/Web-home/_UI/font/noto/NotoSans-Regular.woff2) format("woff2"),url(/Web-home/_UI/font/noto/NotoSans-Regular.woff) format("woff")}
+@font-face{font-family:'Noto Medium';font-style:normal;src:url(/Web-home/_UI/font/noto/NotoSans-Medium.woff2) format("woff2"),url(/Web-home/_UI/font/noto/NotoSans-Medium.woff) format("woff")}
+@font-face{font-family:'Noto Bold';font-style:normal;src:url(/Web-home/_UI/font/noto/NotoSans-Bold.woff2) format("woff2"),url(/Web-home/_UI/font/noto/NotoSans-Bold.woff) format("woff")}
+@font-face{font-family:'Noto Black';font-style:normal;src:url(/Web-home/_UI/font/noto/NotoSans-Black.woff2) format("woff2"),url(/Web-home/_UI/font/noto/NotoSans-Black.woff) format("woff")}
+
+@font-face{font-family:'S-CoreDream-1Thin';font-style:normal;src:url(/Web-home/_UI/font/dream/S-CoreDream-1Thin.woff) format("woff")}
+@font-face{font-family:'S-CoreDream-2ExtraLight';font-style:normal;src:url(/Web-home/_UI/font/dream/S-CoreDream-1Thin.woff) format("woff")}
+@font-face{font-family:'S-CoreDream-3Light';font-style:normal;src:url(/Web-home/_UI/font/dream/S-CoreDream-3Light.woff) format("woff")}
+@font-face{font-family:'S-CoreDream-4Regular';font-style:normal;src:url(/Web-home/_UI/font/dream/S-CoreDream-4Regular.woff) format("woff")}
+@font-face{font-family:'S-CoreDream-5Medium';font-style:normal;src:url(/Web-home/_UI/font/dream/S-CoreDream-5Medium.woff) format("woff")}
+@font-face{font-family:'S-CoreDream-6Bold';font-style:normal;src:url(/Web-home/_UI/font/dream/S-CoreDream-6Bold.woff) format("woff")}
+
+@font-face{font-family:'TitilliumWeb-ExtraLight';font-style:normal;src:url(/Web-home/_UI/font/titillium/TitilliumWeb-ExtraLight.woff2) format("woff2"),url(/Web-home/_UI/font/titillium/TitilliumWeb-ExtraLight.woff) format("woff")}
+@font-face{font-family:'TitilliumWeb-Light';font-style:normal;src:url(/Web-home/_UI/font/titillium/TitilliumWeb-Light.woff2) format("woff2"),url(/Web-home/_UI/font/titillium/TitilliumWeb-Light.woff) format("woff")}
+@font-face{font-family:'TitilliumWeb-Regular';font-style:normal;src:url(/Web-home/_UI/font/titillium/TitilliumWeb-Regular.woff2) format("woff2"),url(/Web-home/_UI/font/titillium/TitilliumWeb-Regular.woff) format("woff")}
+@font-face{font-family:'TitilliumWeb-SemiBold';font-style:normal;src:url(/Web-home/_UI/font/titillium/TitilliumWeb-SemiBold.woff2) format("woff2"),url(/Web-home/_UI/font/titillium/TitilliumWeb-SemiBold.woff) format("woff")}
+@font-face{font-family:'TitilliumWeb-Bold';font-style:normal;src:url(/Web-home/_UI/font/titillium/TitilliumWeb-Bold.woff2) format("woff2"),url(/Web-home/_UI/font/titillium/TitilliumWeb-Bold.woff) format("woff")}
+@font-face{font-family:'TitilliumWeb-Black';font-style:normal;src:url(/Web-home/_UI/font/titillium/TitilliumWeb-Black.woff2) format("woff2"),url(/Web-home/_UI/font/titillium/TitilliumWeb-Black.woff) format("woff")}
+
+@font-face{font-family:'Manse';font-style:normal;src:url(/Web-home/_UI/font/manse/Manse.woff2) format("woff2"),url(/Web-home/_UI/font/manse/Manse.woff) format("woff")}
+
+@font-face{font-family:'Batang_Regular';font-style:normal;src:url(/sites/skukr/font/Batang_Regular.woff) format("woff")}
+
+
+
+
+*,:after,:before,::after,::before{box-sizing:border-box;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html,body{overflow:visible;width:100%;height:100%;font-family:'Noto Light',sans-serif;line-height:1.5;font-size:16px;color:#333;letter-spacing:-.3px;word-wrap:break-word}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,p,button{margin:0;padding:0}
+body{word-break:keep-all}
+header,article,section,nav,footer{display:block}
+img,fieldset,iframe,button{border:0 none}
+li{list-style:none}
+img{vertical-align:top;width:auto;max-width:100%}
+i,em,address{font-style:normal}
+label,button{cursor:pointer}
+button{font-family:'Noto Light',sans-serif;background-color:transparent;overflow:visible;border:0}
+a,button,input{border:0 none; /*outline: none;*/}
+a:link,a:active,a:visited{text-decoration:none;color:#000}
+a:hover{text-decoration:none;color:#2247a6;transition:all .125s cubic-bezier(0.7,0,0.3,1)}
+legend{*width:0;width:0;height:0;font-size:0;position:absolute;z-index:-1}
+table{width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;text-align:center}
+caption{width:0;height:0;padding:0;font-size:0;opacity:0}
+th{text-align:center}
+input::-ms-clear{display:none}
+input,button{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-family:'Noto Light'}
+input[type="radio"]{position:relative;top:2px}
+pre{white-space:pre-line;background-color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;overflow-y:auto}
+select::-ms-expand{display:none}
+textarea{resize:none}
+figure{text-align:center}
+h1,h2,h3,h4,h5,h6,strong{font-weight:400}
+.simplemodal-wrap{font-size:13px}
+.hidden{position:absolute;top:-9999px;left:-9999px}
+._objHtml {overflow: visible !important;}
+.slick-slide {outline: none}
