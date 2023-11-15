@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="project.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+       const read_data_school_schedule = (month) => { // html parsing and ajax send
+           let monthSchedule = document.querySelector("#monthSchedule");
+           if (monthSchedule.firstChild !== null) {
+               monthSchedule.removeChild(monthSchedule.firstChild);
+           }
+           let doc;
+
+           $.ajax({
+               url: 'crawl.php',
+               type: 'get',
+               dataType: 'json',
+               async: false,
+               success: function (data) {
+
+                   var parser = new DOMParser();
+                   doc = parser.parseFromString(data, 'text/html').querySelector('ul').getElementsByTagName('li');
+               },
+               error: function(data) {
+                   console.log(data);
+               }
+           });
+
+           return monthSchedule.appendChild(doc[month -1]);
+       }
+
+
+       window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
+           const date = new Date();
+           read_data_school_schedule(date.getMonth() + 1);
+       });
+     // crolled data read using ajax
+    </script>
+    <script>
+        // textarea ajax로 받아오기 
+
+        function read_data_todolist(){
+            var Temp;
+
+            $.ajax({
+                url: 'samplecode.php',
+                type: 'get',
+                dataType: 'json',
+                async:  false,
+                success: function (data){
+                    Temp = data.memo
+                },
+                error: function (e){
+                    alert(e);
+                }
+
+            })
+           return Temp;
+       };
+
+       // ajax 로 불러온 값을 textarea에 span id 로 연결
+       function displayMemoInTextarea() {
+        var dateMemo = read_data_todolist();
+        document.getElementById('TextareaId').value = dateMemo;
+        }
+
+        var selectedMonthElement = null;
+        let showDBContent; // return 할 db내용
+        function selectMonth(month) {
+            if (selectedMonthElement) {
+                selectedMonthElement.classList.remove("selectedMonth");
+            }
+
+            selectedMonthElement = document.querySelector("#monthList li:nth-child(" + month + ")");
+            selectedMonthElement.classList.add("selectedMonth");
+        }
+
+        function showSchedule() {
+    
+            var month = selectedMonthElement.textContent;
+            var date = document.getElementById("monthSelect").value;
+            var schedule = document.getElementById("scheduleInput").value;
+
+            var outputDiv = document.getElementById("output");
+
+            // 테이블 생성
+            var table = document.createElement("table");
+            table.style.width = "100%";
+
+            // 헤더 추가
+            var headerRow = table.insertRow(0);
+            var dateHeader = headerRow.insertCell(0);
+            dateHeader.innerHTML = "선택한 날짜";
+            var scheduleHeader = headerRow.insertCell(1);
+            scheduleHeader.innerHTML = "일정 및 메모";
+
+            // 데이터 추가
+            var dataRow = table.insertRow(1);
+            var dateCell = dataRow.insertCell(0);
+            dateCell.innerHTML = month + " " + date + "일";
+            var scheduleCell = dataRow.insertCell(1);
+            scheduleCell.innerHTML = schedule;
+
+            // 기존 내용 지우고 새로운 테이블 추가
+            outputDiv.innerHTML = "";
+            outputDiv.appendChild(table);
+
+        }
+    </script>
+</head>
+<body>
+
+
+    <center><h2> Sungkyul ToDoList</h2></center>
+
+    <div class="wrap">
+        <div class="scroll__wrap">
+            <button class="circle" onclick="read_data_school_schedule(1)">1</button>
+            <button class="circle" onclick="read_data_school_schedule(2)">2</button>
+            <button class="circle" onclick="read_data_school_schedule(3)">3</button>
+            <button class="circle" onclick="read_data_school_schedule(4)">4</button>
+            <button class="circle" onclick="read_data_school_schedule(5)">5</button>
+            <button class="circle" onclick="read_data_school_schedule(6)">6</button>
+            <button class="circle" onclick="read_data_school_schedule(7)">7</button>
+            <button class="circle" onclick="read_data_school_schedule(8)">8</button>
+            <button class="circle" onclick="read_data_school_schedule(9)">9</button>
+            <button class="circle" onclick="read_data_school_schedule(10)">10</button>
+            <button class="circle" onclick="read_data_school_schedule(11)">11</button>
+            <button class="circle" onclick="read_data_school_schedule(12)">12</button>
+        </div>
+    </div>
+
+
+    
+
+    <div class="monthContainer">
+        <div class="container">
+            <div class="container-cercle"> 
+                <div class="container-cercle-number">
+                    <span id = ></span>1
+                    <!-- 달 숫자값 받아오기 -->
+                </div>
+            </div>
+            <div class="month-title">
+                This Month's
+                Schedule
+            </div>
+            <div class="container-left"> 
+                <!-- 텍스트 배치 확인용 -->
+                <div id="hoho">
+웹 개발을 하다보면 주어진 공간보다 더 많은 양의 컨텐츠를 보여줘야 하는 경우가 생기는데요. CSS에서는 overflow 속성을 통해서 주어진 공간이 모자라 넘치는 컨텐츠를 어떻게 보여줄지를 제어합니다.
+이번 포스팅에서는 크기가 제한된 영역에서 많은 양의 컨텐츠를 보여줄 때 유용한 CSS의 overflow 속성에 대해서 알아보겠습니다.
+                </div> 
+
+                <!-- 크롤링한 학사일정 받아오기 -->
+                <div id="monthSchedule"></div>
+
+            </div>
+        </div>
+    </div> 
+
+    <br><br>
+    <hr style="margin-left: 10px; margin-right: 10px;">
+    <br><br>
+
+    <form action="samplecode.php" method="POST">
+        <div class="display-flex">
+            <input
+            type="date"
+            data-placeholder="날짜 선택"
+            name="date" required>
+            <button type="button" class="small-button right-align" onclick="read_data_todolist()">일정 확인</button>
+        </div>
+
+        <br>
+        
+        <center><textarea sname="memo" rows="4" cols="50" placeholder="Memo area" required><span id="TextareaId"></span></textarea></center>
+        <br>
+        <div class="display-flex">
+            <input class="small-button" type="submit" value="메모 삭제"> 
+            <input class="small-button right-align" type="submit" value="메모 저장">
+        </div>
+        
+    </form>
+    <br><br>
+
+</body>
+
+</html>

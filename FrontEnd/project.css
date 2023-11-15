@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+body{
+    font-family: 'Roboto Slab', serif;
+    width: 500px;
+    height: 50vh;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+/* 스크롤 범위 설정, 스크롤 생성 */
+.wrap {
+max-width:500px; 
+margin:30px auto;
+}
+
+.scroll__wrap {
+overflow-x:auto;
+white-space:nowrap;
+}
+
+/* 스크롤 숨김 */
+.scroll__wrap::-webkit-scrollbar{
+display: none; } 
+   
+
+.circle {
+    font-family: 'Roboto Slab', serif;
+    position: relative;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 8px;
+    overflow: hidden; /* 숫자부분 스크롤 생성 방지 */
+    color: #000000;
+    background: #DCEDFD;
+    border: none; /* 아웃라인 삭제 */
+
+    overflow-x:auto;
+    white-space:nowrap;
+
+
+    &:hover {
+        background-color: #4379C6;
+        color: white;      
+    }
+    &:active {
+        background-color: #4379C6; /* 클릭 시 적용할 색상 */
+        color: white; 
+    }
+  }
+
+/* 달 스케쥴 컨테이너 가운데 정렬 */
+.monthContainer {
+    display: flex;
+    justify-content: center;
+}
+
+/* 달 스케쥴 컨테이너 생성 */
+.container{
+
+    position: relative;
+    width: 85%;
+    height: 180px;
+    background: #DCEDFD;
+    border-radius: 10px;
+    border-style: solid;
+    border: #DCEDFD;
+
+}
+
+/* 컨테이너 오른쪽 옵션 */
+.container-left{
+
+    width: 70%;
+    height: 177px;
+    background: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #DCEDFD;
+    float: right;
+}
+
+.container-cercle{
+    font-family: 'Roboto Slab', serif;
+    position: absolute;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    line-height: 50px;
+    font-size: 38px;
+    font-weight: bold;
+    margin: 25px;
+    overflow: hidden; /* 숫자부분 스크롤 생성 방지 */
+    color: #000000;
+    background: white;
+    border: none; /* 아웃라인 삭제 */
+}
+
+.container-cercle-number{
+    
+    color: #4379C6;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.month-title{
+    text-align: center;
+    position: absolute;
+    white-space:pre-wrap;
+    color: #4379C6;
+    top: 50%;
+    left: -12%;
+}
+
+ 
+    /* 텍스트 배치 확인용 */
+
+    #hoho{
+    height: 85%;
+    margin: 15px;
+    overflow-y: scroll;
+    }
+
+
+#monthSchedule{
+    white-space:pre-wrap;
+    margin: 10px;
+}
+
+
+input[type='date']{
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border:1px solid gray;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+input[type='date']::before {
+content: attr(data-placeholder);
+width: 100%;
+}
+
+textarea{
+    
+    position: relative;
+    padding: 10px;
+
+    border:1px solid gray;
+    border-radius: 5px;
+
+    box-sizing: border-box;
+}
+
+.small-button{
+
+    position: relative;
+    top:50%;
+    background-color:#4379C6;
+    color: #fff;
+    border:none; 
+    border-radius:5px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.display-flex {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.right-align{
+    margin-left: auto;
+}
+
+  
+  
