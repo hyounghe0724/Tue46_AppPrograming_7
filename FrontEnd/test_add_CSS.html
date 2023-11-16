@@ -118,7 +118,18 @@
 
 
     <center><h2> Sungkyul ToDoList</h2></center>
+    <label>Student Number</label>
+    <input type="number" name="studentNumber" onsubmit="">
+    <!-- input 에 js함수 만들어야함
+    ajax ->  db -> 학번 vaildate 잇으면 localStorage 저장, 없으면 저장 하시겠습니까 alert() 후 저장 ( 학번에 맞는 table 생성 )
 
+    ! localStorage 에는 1개의 key-value 쌍의 studentNumber 만 존재 해야함
+
+    날짜를 선택하면 localStorage의 key 값과 날짜값을 php 코드에 전송, 테이블을 찾고 날짜를 찾아 반환.
+     ( 기존의 table name을 todoList가 아닌 studentNumber로 지정 )
+
+     css 적용
+    -->
     <div class="wrap">
         <div class="scroll__wrap">
             <button class="circle" onclick="read_data_school_schedule(1)">1</button>
