@@ -7,7 +7,7 @@
     <script>
        const read_data_school_schedule = (month) => { // html parsing and ajax send
            let monthSchedule = document.querySelector("#monthSchedule");
-           if (monthSchedule.firstChild !== null) {
+           if (monthSchedule.firstChild != null) {
                monthSchedule.removeChild(monthSchedule.firstChild);
            }
            let doc;

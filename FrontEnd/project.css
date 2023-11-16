@@ -77,15 +77,16 @@ display: none; }
 /* 컨테이너 오른쪽 옵션 */
 .container-left{
     position: relative;
+    right: -120px;
+    bottom: 48px;
     align-content: center;
     width: 70%;
-    height: 177px;
+    height: 170px;
     background: white;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-style: solid;
     border-color: #DCEDFD;
-    float: right;
 }
 
 .container-cercle{
@@ -116,14 +117,18 @@ display: none; }
 }
 
 .month-title{
+    position: relative;
+    text-align: center;
     width: 100px;
     height: 50px;
+    top: 120px;
+    left: 10px;
+    font-weight: bold;
+    font-size: large;
     white-space:pre-wrap;
     color: #4379C6;
 }
-.month-title h3{
-    position: relative;
-}
+
 
  
     /* 텍스트 배치 확인용 */
@@ -131,7 +136,7 @@ display: none; }
     #hoho{
     height: 85%;
     margin: 15px;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     }
 
 
