@@ -9,6 +9,9 @@
     <script>
        const read_data_school_schedule = (month) => { // html parsing and ajax send
            let monthSchedule = document.querySelector("#monthSchedule");
+           let containercercleNumber = document.querySelector(".container-cercle-number");
+           let monthTitle = document.querySelector(".month-title");
+
            if (monthSchedule.firstChild !== null) {
                monthSchedule.removeChild(monthSchedule.firstChild);
            }
@@ -24,12 +27,24 @@
                    var parser = new DOMParser();
                    doc = parser.parseFromString(data, 'text/html').querySelector('ul').getElementsByTagName('li');
                },
+
+
+
                error: function(data) {
                    console.log(data);
                }
            });
+           const classNameNumMonth = doc[month -1].querySelector(".num em"); // 달 숫자
+           const classNameNumH3 = doc[month -1].querySelector(".num h3"); // 영문
+           const classNameDesc = doc[month -1].querySelector(".desc"); // 학사일정 내용
 
-           return monthSchedule.appendChild(doc[month -1]);
+           containercercleNumber.appendChild(classNameNumMonth);
+           monthTitle.appendChild(classNameNumH3);
+
+
+
+
+           return
        }
 
 
@@ -40,7 +55,7 @@
      // crolled data read using ajax
     </script>
     <script>
-        // textarea ajax로 받아오기 
+        // textarea ajax로 받아오기
 
         function read_data_todolist(){
             var Temp;
@@ -67,16 +82,6 @@
         document.getElementById('TextareaId').value = dateMemo;
         }
 
-        var selectedMonthElement = null;
-        let showDBContent; // return 할 db내용
-        function selectMonth(month) {
-            if (selectedMonthElement) {
-                selectedMonthElement.classList.remove("selectedMonth");
-            }
-
-            selectedMonthElement = document.querySelector("#monthList li:nth-child(" + month + ")");
-            selectedMonthElement.classList.add("selectedMonth");
-        }
 
         function showSchedule() {
     
@@ -138,29 +143,24 @@
 
     <div class="monthContainer">
         <div class="container">
-            <div class="container-cercle"> 
+            <div class="container-cercle">
                 <div class="container-cercle-number">
-                    <span id = ></span>1
                     <!-- 달 숫자값 받아오기 -->
                 </div>
             </div>
             <div class="month-title">
-                This Month's
-                Schedule
             </div>
-            <div class="container-left"> 
+            <div class="container-left">
                 <!-- 텍스트 배치 확인용 -->
                 <div id="hoho">
-웹 개발을 하다보면 주어진 공간보다 더 많은 양의 컨텐츠를 보여줘야 하는 경우가 생기는데요. CSS에서는 overflow 속성을 통해서 주어진 공간이 모자라 넘치는 컨텐츠를 어떻게 보여줄지를 제어합니다.
-이번 포스팅에서는 크기가 제한된 영역에서 많은 양의 컨텐츠를 보여줄 때 유용한 CSS의 overflow 속성에 대해서 알아보겠습니다.
-                </div> 
+                </div>
 
                 <!-- 크롤링한 학사일정 받아오기 -->
                 <div id="monthSchedule"></div>
 
             </div>
         </div>
-    </div> 
+    </div>
 
     <br><br>
     <hr style="margin-left: 10px; margin-right: 10px;">

@@ -14,8 +14,8 @@ if ($conn->connect_error) {
 }
 
 // POST 요청에서 날짜와 메모 내용 가져오기
-$date = $_POST['date'];
-$memo = $_POST['memo'];
+$date = $_POST['date']; // json_decode(file_get_contents("php://input"))->{"date"};
+$memo = $_POST['memo']; // json_decode(file_get_contents("php://input"))->{"memo"};
 
 // 날짜를 기반으로 메모가 이미 존재하는지 확인
 $sql = "SELECT * FROM todo_list WHERE date = '$date'"; // table name = todo_list
