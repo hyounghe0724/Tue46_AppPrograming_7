@@ -7,14 +7,40 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <script>
-       const read_data_school_schedule = (month) => { // html parsing and ajax send
-           let monthSchedule = document.querySelector("#monthSchedule");
+
+        let seletedDate;
+        const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ];
+
+        const read_data_school_schedule = (month) => { // html parsing and ajax send
+           let monthContainer = document.querySelector(".monthContainer");
            let containercercleNumber = document.querySelector(".container-cercle-number");
            let monthTitle = document.querySelector(".month-title");
+            let hoho = document.querySelector("#hoho");
 
-           if (monthSchedule.firstChild !== null) {
-               monthSchedule.removeChild(monthSchedule.firstChild);
+
+           if (containercercleNumber.firstChild !== null) {
+               containercercleNumber.removeChild(containercercleNumber.firstChild);
            }
+           if (monthTitle.firstChild !== null) {
+               monthTitle.removeChild(monthTitle.firstChild);
+           }
+           if (hoho.firstChild !== null) {
+               hoho.removeChild(hoho.firstChild);
+           }
+
            let doc;
 
            $.ajax({
@@ -34,30 +60,53 @@
                    console.log(data);
                }
            });
-           const classNameNumMonth = doc[month -1].querySelector(".num em"); // 달 숫자
-           const classNameNumH3 = doc[month -1].querySelector(".num h3").textContent.match(/[a-zA-Z]+/g)?.join('');
-           classNameNumH3.classList.add("month-title");
-           const classNameDesc = doc[month -1].querySelector(".desc"); // 학사일정 내용
+            const classNameNumMonth = doc[month -1].querySelector(".num em"); // 달 숫자
+            const classNameDesc = doc[month -1].querySelector(".desc"); // 학사일정 내용
 
-           containercercleNumber.appendChild(classNameNumMonth);
-           monthTitle.textContent = classNameNumH3; // 월 영문을 month-title에 text로 삽입
+            containercercleNumber.appendChild(classNameNumMonth);
+            monthTitle.innerText = `${months[month - 1]}`; // 월 영문을 month-title에 text로 삽입
+            hoho.appendChild(classNameDesc);
 
            return
        }
 
+       const delete_schedule = () => {
+            if( seletedDate === undefined){
+                alert("선택된 날짜가 없습니다");
+                return;
+            }
+
+           $.ajax({
+               url: 'scheduleDelete.php',
+               type: 'POST',
+               date: {deleteDate : seletedDate},
+               dataType: 'json',
+               async:  false,
+               success: function (data){
+               },
+               error: function (e){
+                   alert(e);
+               }
+
+           })
+           return Temp;
+       }
+       const handleDateChange = (date) => {
+            if ( date !== undefined || date !== null){
+                seletedDate = date;
+            }
+       }
 
        window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
            const date = new Date();
            read_data_school_schedule(date.getMonth() + 1);
        });
      // crolled data read using ajax
-    </script>
-    <script>
         // textarea ajax로 받아오기
 
-        function read_data_todolist(){
+        function read_data_todolist(date){
             var Temp;
-
+            seletedDate = date;
             $.ajax({
                 url: 'samplecode.php',
                 type: 'get',
@@ -154,18 +203,14 @@
         <div class="container">
             <div class="container-cercle">
                 <div class="container-cercle-number">
-                    11
-                    <!-- 달 숫자값 받아오기 -->
                 </div>
             </div>
-                <div class="month-title">September</div>
+                <div class="month-title"></div>
 
             <div class="container-left">
-                <!-- 텍스트 배치 확인용 -->
                 <div id="hoho">
                 </div>
 
-                <!-- 크롤링한 학사일정 받아오기 -->
                 <div id="monthSchedule"></div>
 
             </div>
@@ -182,15 +227,17 @@
             type="date"
             data-placeholder="날짜 선택"
             name="date" required>
-            <button type="button" class="small-button right-align" onclick="read_data_todolist()">일정 확인</button>
+            <button type="button" class="small-button right-align" onchange="handleDateChange(this.value)"
+                    onclick="read_data_todolist(this.value)">일정 확인</button>
         </div>
 
         <br>
         
-        <center><textarea sname="memo" rows="4" cols="50" placeholder="Memo area" required><span id="TextareaId"></span></textarea></center>
+        <center><textarea sname="memo" rows="4" cols="50" placeholder="Memo area" required></textarea></center>
         <br>
         <div class="display-flex">
-            <input class="small-button" type="submit" value="메모 삭제"> 
+            <input class="small-button" name="deleteToDate" onsubmit="delete_schedule()" type="submit" value="메모 삭제" >
+
             <input class="small-button right-align" type="submit" value="메모 저장">
         </div>
         
