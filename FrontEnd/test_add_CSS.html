@@ -71,29 +71,26 @@
        }
 
        const delete_schedule = () => {
-            if( seletedDate === undefined){
-                alert("선택된 날짜가 없습니다");
-                return;
-            }
-
+           const selectedDate = document.getElementById("deleteInput").value;
            $.ajax({
                url: 'scheduleDelete.php',
                type: 'POST',
-               date: {deleteDate : seletedDate},
+               data: {deleteDate : selectedDate},
                dataType: 'json',
                async:  false,
                success: function (data){
                },
                error: function (e){
-                   alert(e);
+                   alert("선택한 날짜에 메모가 존재하지 않습니다")
                }
 
-           })
-           return Temp;
+           });
        }
        const handleDateChange = (date) => {
+           let deleteInput = document.querySelector("#deleteInput");
             if ( date !== undefined || date !== null){
                 seletedDate = date;
+                deleteInput.value = date;
             }
        }
 
@@ -225,23 +222,29 @@
         <div class="display-flex">
             <input
             type="date"
-            data-placeholder="날짜 선택"
+            onchange="handleDateChange(this.value)"
+
             name="date" required>
-            <button type="button" class="small-button right-align" onchange="handleDateChange(this.value)"
+            <button type="button" class="small-button right-align"
                     onclick="read_data_todolist(this.value)">일정 확인</button>
         </div>
 
         <br>
         
-        <center><textarea sname="memo" rows="4" cols="50" placeholder="Memo area" required></textarea></center>
+        <center><textarea name="memo" rows="4" cols="50" placeholder="Memo area" required></textarea></center>
         <br>
         <div class="display-flex">
-            <input class="small-button" name="deleteToDate" onsubmit="delete_schedule()" type="submit" value="메모 삭제" >
 
             <input class="small-button right-align" type="submit" value="메모 저장">
         </div>
-        
+
+
     </form>
+        <input id="deleteInput"
+               class="small-button"
+               type="button"
+               onclick="delete_schedule()"
+               value="2023-11-12" >
     <br><br>
 
 </body>

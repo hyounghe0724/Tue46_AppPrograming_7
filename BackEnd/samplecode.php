@@ -1,9 +1,9 @@
 <?php
 // MySQL 서버 연결 설정
 $servername = "localhost";
-$username = "사용자이름";
-$password = "비밀번호";
-$dbname = "데이터베이스이름";
+$username = "korea";
+$password = "1234";
+$dbname = "test";
 
 // 데이터베이스에 연결
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -1,9 +1,9 @@
 <?php
 // MySQL 서버 연결 설정
 $servername = "localhost";
-$username = "사용자이름";
-$password = "비밀번호";
-$dbname = "데이터베이스이름";
+$username = "korea";
+$password = "1234";
+$dbname = "test";
 
 // 데이터베이스에 연결
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -14,24 +14,22 @@ if ($conn->connect_error) {
 }
 
 // POST 요청에서 날짜와 메모 내용 가져오기
-$date = $_POST['seletedDate']; // json_decode(file_get_contents("php://input"))->{"date"};
-if($date == null){
-    echo null;
-}
+$date = $_POST['deleteDate'];
+
 // 날짜를 기반으로 메모가 이미 존재하는지 확인
-$sql = "SELECT * FROM todo_list WHERE date = '$date'"; // table name = todo_list
+$sql = "SELECT * FROM todo_list WHERE date = '$date'"; // 테이블 이름 = todo_list
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    // 메모가 이미 존재하면 업데이트
-    $deleteSql = "DELETE FROM todo_list  WHERE date = '$date'";
+    $deleteSql = "DELETE FROM todo_list WHERE date = '$date'";
     if ($conn->query($deleteSql) === TRUE) {
-        echo "메모 업데이트 성공";
+        echo "메모 삭제 성공";
     } else {
-        echo "메모 업데이트 실패: " . $conn->error;
+        echo "메모 삭제 실패: " . $conn->error;
     }
+} else {
+    echo "선택한 날짜에 메모가 존재하지 않습니다.";
 }
-
 
 // 데이터베이스 연결 닫기
 $conn->close();
