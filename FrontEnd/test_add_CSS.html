@@ -8,7 +8,9 @@
 
     <script>
 
-        let seletedDate;
+        let seletedDate; // input type= date 의 선택된 value값 저장
+        let onlyTextarea;
+
         const months = [
             "January",
             "February",
@@ -23,7 +25,6 @@
             "November",
             "December"
         ];
-
         const read_data_school_schedule = (month) => { // html parsing and ajax send
            let monthContainer = document.querySelector(".monthContainer");
            let containercercleNumber = document.querySelector(".container-cercle-number");
@@ -57,7 +58,6 @@
 
 
                error: function(data) {
-                   console.log(data);
                }
            });
             const classNameNumMonth = doc[month -1].querySelector(".num em"); // 달 숫자
@@ -69,8 +69,7 @@
 
            return
        }
-
-       const delete_schedule = () => {
+        const delete_schedule = () => {
            const selectedDate = document.getElementById("deleteInput").value;
            $.ajax({
                url: 'scheduleDelete.php',
@@ -86,23 +85,21 @@
 
            });
        }
-       const handleDateChange = (date) => {
+        const handleDateChange = (date) => {
            let deleteInput = document.querySelector("#deleteInput");
             if ( date !== undefined || date !== null){
                 seletedDate = date;
                 deleteInput.value = date;
             }
        }
-
-       window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
+        window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
            const date = new Date();
            read_data_school_schedule(date.getMonth() + 1);
        });
-     // crolled data read using ajax
-        // textarea ajax로 받아오기
 
         function read_data_todolist(date){
-            var Temp;
+            if(onlyTextarea === undefined){ onlyTextarea = document.querySelector("#onlyTextarea");}
+            let Temp;
             seletedDate = date;
             $.ajax({
                 url: 'samplecode.php',
@@ -113,15 +110,15 @@
                     Temp = data.memo
                 },
                 error: function (e){
-                    alert(e);
                 }
 
             })
+            onlyTextarea.value = Temp;
            return Temp;
-       };
+       }
 
-       // ajax 로 불러온 값을 textarea에 span id 로 연결
-       function displayMemoInTextarea() {
+
+        function displayMemoInTextarea() {
         var dateMemo = read_data_todolist();
         document.getElementById('TextareaId').value = dateMemo;
         }
@@ -231,7 +228,7 @@
 
         <br>
         
-        <center><textarea name="memo" rows="4" cols="50" placeholder="Memo area" required></textarea></center>
+        <center><textarea id="onlyTextarea" name="memo" rows="4" cols="50" placeholder="Memo area" required></textarea></center>
         <br>
         <div class="display-flex">
 
