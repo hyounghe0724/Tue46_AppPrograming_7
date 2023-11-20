@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sungkyul ToDo 시작 페이지</title>
+    <link rel="stylesheet" href="test_startpage.css">
+</head>
+
+<body>
+    <div class="start-page">
+        <!-- 구글 드라이브를 통해 가져오는 Sungkyul University Logo 이미지 -->
+        <img src="ui_img_1.png" alt="Sungkyul University Logo" class="logo">
+        <h1 class="title">Sungkyul TO DO!</h1>
+        <div class="start-box" onclick="redirectToToDo()"> 
+            <p class="start-text">Let's start!</p>
+        </div>
+    </div>
+
+    <script>
+        function redirectToToDo() { /*버튼을 클릭하면 해당 페이지로 넘어감*/
+            window.location.href = 'test_add_CSS.html';
+        }
+    </script>
+</body>
+
+</html>

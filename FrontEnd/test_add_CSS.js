@@ -1,5 +1,6 @@
-let seletedDate; // input type= date 의 선택된 value값 저장
+var selectedDate; // input type= date 의 선택된 value값 저장
 let onlyTextarea;
+var inputStudentNumber = document.querySelector("#studentNumber");
 
 const months = [
     "January",
@@ -60,7 +61,10 @@ const read_data_school_schedule = (month) => { // html parsing and ajax send
     return
 }
 const delete_schedule = () => {
-    const selectedDate = document.getElementById("deleteInput").value;
+    if(selectedDate === undefined || selectedDate === null) {
+        alert("날짜를 선택하지 않았습니다");
+        return;
+    }
     $.ajax({
         url: 'scheduleDelete.php',
         type: 'POST',
@@ -77,15 +81,14 @@ const delete_schedule = () => {
 }
 const handleDateChange = (date) => {
     let deleteInput = document.querySelector("#deleteInput");
-    if ( date !== undefined || date !== null){
-        seletedDate = date;
-        deleteInput.value = date;
+    if ( date !== undefined ){
+        selectedDate = date;
     }
 }
 function read_data_todolist(date){
-    if(onlyTextarea === undefined){ onlyTextarea = document.querySelector("#onlyTextarea");}
+     onlyTextarea = document.querySelector("#onlyTextarea");
     let Temp;
-    seletedDate = date;
+    selectedDate = date;
     $.ajax({
         url: 'samplecode.php',
         type: 'get',
@@ -102,6 +105,7 @@ function read_data_todolist(date){
     return Temp;
 }
 const OnSubmitStudentNumber = () => {
+    console.log("시발");
     let studentNumber = document.querySelector("#studentNumber").value;
     if(localStorage.getItem('studentNumber')){
         localStorage.removeItem('studentNumber');
@@ -143,20 +147,20 @@ const OnSubmitStudentNumber = () => {
         }
     })
 }
-function displayMemoInTextarea() {
-    var dateMemo = read_data_todolist();
-    document.getElementById('TextareaId').value = dateMemo;
-}
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();
     read_data_school_schedule(date.getMonth() + 1);
 });
-document.querySelector("#sendStuNum").addEventListener("submit",
-    OnSubmitStudentNumber);
+inputStudentNumber.addEventListener("keypress", function (event){
+    if(event.key === "Enter"){
+        event.preventDefault();
+        document.getElementById("sendStuNum").click();
+    }
+    // /input에서 number가 입력되고 enter가 눌리면 button을 의도적으로 클릭하게 해서 함수를 작동하게함
+});
 
-function showSchedule() {
+ {
 
-    var month = selectedMonthElement.textContent;
     var date = document.getElementById("monthSelect").value;
     var schedule = document.getElementById("scheduleInput").value;
 

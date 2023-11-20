@@ -5,7 +5,6 @@
     <title>Title</title>
     <link rel="stylesheet" href="project.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="test_add_CSS.js"></script>
 </head>
 <body>
 
@@ -38,11 +37,9 @@
 
      css 적용
     -->
-    <form id="sendStuNum" >
-        <label for="studentNumber">Student Number</label>
-        <input id="studentNumber" type="number" name="studentNumber"  >
-        <input type="submit" value="enter your student number">
-    </form>
+
+    <input id="studentNumber" type="number"  >
+    <button id="sendStuNum" onclick="OnSubmitStudentNumber()">enter your student number</button>
 
 
     
@@ -95,9 +92,10 @@
                class="small-button"
                type="button"
                onclick="delete_schedule()"
-               value="2023-11-12" >
+               value="메모 전체 삭제" >
     <br><br>
 
 </body>
+<script src="test_add_CSS.js"></script>
 
 </html>

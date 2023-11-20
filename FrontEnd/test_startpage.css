@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+body{
+    font-family: 'Roboto Slab', serif;
+    width: 500px;
+    height: 50vh;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+
+.start-page {
+    text-align: center;
+    padding: 20px; /* 모바일 및 웹에서 공통적인 패딩 추가 */
+    margin:200px auto;
+}
+
+.logo {
+    max-width: 500px; /* 성결대 로고 사진의 크기*/
+    height: auto;
+    margin:20px auto;
+}
+
+.title {
+    color: #4379C6;
+    font-size: 36px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Roboto Slab', serif; 
+    margin:20px auto;
+}
+
+.start-box {
+
+    position: relative;
+    top:50%;
+    background-color:#4379C6;
+    color: #fff;
+    border:none; 
+    border-radius:5px; 
+    padding:1px;
+    min-height:10px; 
+    min-width: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #4379C6; /* 버튼의 기본 배경색*/
+}
+
+.start-box:hover {
+    background-color: #356094; /* 마우스로 버튼을 가져가면 색상 변경 */
+}
+
+.start-box:active {
+    background-color: #2c4e78; /* 마우스로 버튼 클릭 시 색상 변경 */
+}
+
+
+.start-text {
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.display-flex {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.right-align{
+    margin-left: auto;
+}
