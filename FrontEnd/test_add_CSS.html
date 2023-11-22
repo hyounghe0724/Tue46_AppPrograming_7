@@ -27,6 +27,19 @@
         </div>
     </div>
 
+    <script>
+        var header = document.getElementById("circlediv");
+        var btns =header.getElementsByClassName("circle");
+        for(var i=0; i < btns.length; i++){
+            btns[i].addEventListener("click",function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace("active","");//원래있던 active 클래스 네임을 지운다 
+            this.className += " active";//클릭한 곳에 active 클래스를 추가 한다.
+        });
+    }
+    //클릭하면 색상 변경 자바 스크립트 
+    </script>
+        
     <!-- input 에 js함수 만들어야함
     ajax ->  db -> 학번 vaildate 잇으면 localStorage 저장, 없으면 저장 하시겠습니까 alert() 후 저장 ( 학번에 맞는 table 생성 )
 
