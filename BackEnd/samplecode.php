@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
         echo "메모 생성 실패: " . $conn->error;
     }
 }
-
+// echo로 작성된 메모 return, 또는 memo를 객체로 가져오는 php파일 작성
 // 데이터베이스 연결 닫기
 $conn->close();
 ?>
