@@ -37,7 +37,7 @@ const memoDelete = () => {
     });
 }
 
-function memoCreateAndUpdate(date){
+function memoCreateAndUpdate(date){ // 로컬스토리지의 유저정보를 가져와서 post 지금은 postman 사용중
      onlyTextarea = document.querySelector("#onlyTextarea");
     let Temp;
     selectedDate = date;
@@ -56,11 +56,11 @@ function memoCreateAndUpdate(date){
     onlyTextarea.value = Temp;
     return Temp;
 }
-function read_data_todolist(){
+function read_data_todolist(){ // 유저 정보랑 같이 보냄, 없으면 return
     let Temp;
     selectedDate = date;
     $.ajax({
-        url: '.php',
+        url: 'readMemo.php',
         type: 'get',
         data:{date:selectedDate},
         dataType: 'json',
@@ -75,18 +75,21 @@ function read_data_todolist(){
     onlyTextarea.value = Temp;
     return Temp;
 } // memoRead
-const OnSubmitStudentNumber = () => { // login 할떄
+const validateStudentNumber = () => { // login 할떄
     let studentNumber = document.querySelector("#studentNumber").value;
     let studentNumberPassword = document.querySelector("#studentPassword").value;
     localStorage.clear();
     $.ajax({ // DB내부에 이미 잇는지 확인
         url:"validateStudentNumber.php",
-        type: 'post',
+        type: 'POST',
         dataType: 'json',
         data:{studentNumber: studentNumber, password: studentNumberPassword},
         async: false,
-        success: function (vaildatedNumber) {
-            localStorage.setItem('studentNumber', vaildatedNumber);
+        success: function (bool) {
+            if(bool){
+                localStorage.setItem('studentNumber', vaildatedNumber);
+                alert("로그인 되었습니다");
+            }
         },
 
         error: function(data) {
@@ -153,68 +156,8 @@ const handleDateChange = (date) => {
         selectedDate = date;
     }
 }
-function read_data_todolist(date){
-     onlyTextarea = document.querySelector("#onlyTextarea");
-    let Temp;
-    selectedDate = date;
-    $.ajax({
-        url: 'samplecode.php',
-        type: 'get',
-        dataType: 'json',
-        async:  false,
-        success: function (data){
-            Temp = data.memo
-        },
-        error: function (e){
-        }
 
-    })
-    onlyTextarea.value = Temp;
-    return Temp;
-}
-const OnSubmitStudentNumber = () => {
-    console.log("시발");
-    let studentNumber = document.querySelector("#studentNumber").value;
-    if(localStorage.getItem('studentNumber')){
-        localStorage.removeItem('studentNumber');
-    }
-    $.ajax({ // DB내부에 이미 잇는지 확인
-        url:"validateStudentNumber.php",
-        type: 'post',
-        dataType: 'json',
-        data:{studentNumber: studentNumber},
-        async: false,
-        success: function (vaildatedNumber) {
-            localStorage.setItem('studentNumber', vaildatedNumber);
-        },
 
-        error: function(data) {
-            if(data === null){
-                var confirmation = confirm("학번 정보가 없습니다. 생성하시겠습니까?");
-                if (confirmation) {
-                    $.ajax({
-                        url:"createStudentNumber.php",
-                        type: 'post',
-                        dataType: 'json',
-                        data:{studentNumber: studentNumber},
-                        async: false,
-                        success: function (data) {
-                            console.log("Positive True");
-                        },
-                        error:function (data) {
-                            console.log("Positive false");
-                        }
-                    })
-                    alert("정보를 처리합니다.");
-                }
-                else {
-                    console.log("Negative true");
-                    alert("정보 처리를 취소했습니다.");
-                }
-            }
-        }
-    })
-}
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();
     read_data_school_schedule(date.getMonth() + 1);
@@ -226,34 +169,3 @@ inputStudentNumber.addEventListener("keypress", function (event){
     }
     // /input에서 number가 입력되고 enter가 눌리면 button을 의도적으로 클릭하게 해서 함수를 작동하게함
 });
-
- {
-
-    var date = document.getElementById("monthSelect").value;
-    var schedule = document.getElementById("scheduleInput").value;
-
-    var outputDiv = document.getElementById("output");
-
-    // 테이블 생성
-    var table = document.createElement("table");
-    table.style.width = "100%";
-
-    // 헤더 추가
-    var headerRow = table.insertRow(0);
-    var dateHeader = headerRow.insertCell(0);
-    dateHeader.innerHTML = "선택한 날짜";
-    var scheduleHeader = headerRow.insertCell(1);
-    scheduleHeader.innerHTML = "일정 및 메모";
-
-    // 데이터 추가
-    var dataRow = table.insertRow(1);
-    var dateCell = dataRow.insertCell(0);
-    dateCell.innerHTML = month + " " + date + "일";
-    var scheduleCell = dataRow.insertCell(1);
-    scheduleCell.innerHTML = schedule;
-
-    // 기존 내용 지우고 새로운 테이블 추가
-    outputDiv.innerHTML = "";
-    outputDiv.appendChild(table);
-
-}
