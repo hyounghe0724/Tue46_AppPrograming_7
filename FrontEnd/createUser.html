@@ -12,8 +12,8 @@
 
 <body>
     <div id="content">
-        <h2>SIGN IN</h2>
-        <form>
+        <h2>Sign Up</h2>
+        <form action="createUser.php" method="POST">
 
             <label for="id">ID</label>
             <input type="text" id="id" name="id">
@@ -22,34 +22,8 @@
             <input type="password" id="pw" name="pw">
 
 
-            <button type="submit">LOG IN</button>
+            <button type="submit">SIGN UP</button>
         </form>
     </div>
-    <script>
-        $(document).ready(function () {
-            $('button[type="submit"]').click(function (e) {
-                e.preventDefault(); 
-
-                
-                var id = $('#id').val();
-                var pw = $('#pw').val();
-
-                
-                $.ajax({
-                    type: 'POST',
-                    url: 'createUser.php', 
-                    data: { id: id, pw: pw },
-                    success: function(response) {
-                        console.log(response);
-                        if (response === '회원가입이 완료되었습니다.') {
-                            alert(response);
-                        } else {
-                            alert('회원가입에 실패했습니다. 다시 시도하세요.');
-                        }
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>

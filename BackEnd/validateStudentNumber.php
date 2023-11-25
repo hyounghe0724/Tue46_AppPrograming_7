@@ -21,7 +21,7 @@ $studentNumber = $_POST['studentNumber'];
 $password = $_POST['password'];
 
 // 테이블이 이미 존재하는지 확인
-$tableExistsQuery = "select * from user where studentNumber = $studentNumber'";
+$tableExistsQuery = "select * from user where studentNumber = $studentNumber";
 if ($conn->query($tableExistsQuery)->num_rows > 0) {
     echo true;
 }
