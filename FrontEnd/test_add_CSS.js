@@ -16,6 +16,93 @@ const months = [
     "November",
     "December"
 ];
+
+const memoDelete = () => {
+    if(selectedDate === undefined || selectedDate === null) {
+        alert("날짜를 선택하지 않았습니다");
+        return;
+    }
+    $.ajax({
+        url: 'memoDelete.php',
+        type: 'POST',
+        data: {deleteDate : selectedDate},
+        dataType: 'json',
+        async:  false,
+        success: function (data){
+        },
+        error: function (e){
+            alert("선택한 날짜에 메모가 존재하지 않습니다")
+        }
+
+    });
+}
+
+function memoCreateAndUpdate(date){
+     onlyTextarea = document.querySelector("#onlyTextarea");
+    let Temp;
+    selectedDate = date;
+    $.ajax({
+        url: 'MemoCreateAndUpdate.php',
+        type: 'get',
+        dataType: 'json',
+        async:  false,
+        success: function (data){
+            Temp = data.memo
+        },
+        error: function (e){
+        }
+
+    })
+    onlyTextarea.value = Temp;
+    return Temp;
+}
+function read_data_todolist(){
+    let Temp;
+    selectedDate = date;
+    $.ajax({
+        url: '.php',
+        type: 'get',
+        data:{date:selectedDate},
+        dataType: 'json',
+        async:  false,
+        success: function (data){
+            Temp = data.memo
+        },
+        error: function (e){
+        }
+
+    })
+    onlyTextarea.value = Temp;
+    return Temp;
+} // memoRead
+const OnSubmitStudentNumber = () => { // login 할떄
+    let studentNumber = document.querySelector("#studentNumber").value;
+    let studentNumberPassword = document.querySelector("#studentPassword").value;
+    localStorage.clear();
+    $.ajax({ // DB내부에 이미 잇는지 확인
+        url:"validateStudentNumber.php",
+        type: 'post',
+        dataType: 'json',
+        data:{studentNumber: studentNumber, password: studentNumberPassword},
+        async: false,
+        success: function (vaildatedNumber) {
+            localStorage.setItem('studentNumber', vaildatedNumber);
+        },
+
+        error: function(data) {
+            if(data === null){
+                var confirmation = confirm("학번 정보가 없습니다. 생성하시겠습니까?");
+                if (confirmation) {
+                    location.href = 'createUser.html';
+                }
+                else {
+                    alert("정보 처리를 취소했습니다.");
+                }
+            }
+        }
+    })
+}
+
 const read_data_school_schedule = (month) => { // html parsing and ajax send
     let monthContainer = document.querySelector(".monthContainer");
     let containercercleNumber = document.querySelector(".container-cercle-number");
@@ -60,31 +147,13 @@ const read_data_school_schedule = (month) => { // html parsing and ajax send
 
     return
 }
-const delete_schedule = () => {
-    if(selectedDate === undefined || selectedDate === null) {
-        alert("날짜를 선택하지 않았습니다");
-        return;
-    }
-    $.ajax({
-        url: 'scheduleDelete.php',
-        type: 'POST',
-        data: {deleteDate : selectedDate},
-        dataType: 'json',
-        async:  false,
-        success: function (data){
-        },
-        error: function (e){
-            alert("선택한 날짜에 메모가 존재하지 않습니다")
-        }
-
-    });
-}
 const handleDateChange = (date) => {
     let deleteInput = document.querySelector("#deleteInput");
     if ( date !== undefined ){
         selectedDate = date;
     }
 }
+<<<<<<< HEAD
 function read_data_todolist(date){
      onlyTextarea = document.querySelector("#onlyTextarea");
     let Temp;
@@ -149,6 +218,8 @@ const OnSubmitStudentNumber = () => {
         }
     })
 }
+=======
+>>>>>>> 1494f3cb2f0a93b9aa79cb0b49221d48c7db17d2
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();
     read_data_school_schedule(date.getMonth() + 1);
@@ -162,6 +233,7 @@ inputStudentNumber.addEventListener("keypress", function (event){
 });
 
 //  {
+<<<<<<< HEAD
 
 //     var date = document.getElementById("monthSelect").value;
 //     var schedule = document.getElementById("scheduleInput").value;
@@ -172,22 +244,46 @@ inputStudentNumber.addEventListener("keypress", function (event){
 //     var table = document.createElement("table");
 //     table.style.width = "100%";
 
+=======
+//
+//     var date = document.getElementById("monthSelect").value;
+//     var schedule = document.getElementById("scheduleInput").value;
+//
+//     var outputDiv = document.getElementById("output");
+//
+//     // 테이블 생성
+//     var table = document.createElement("table");
+//     table.style.width = "100%";
+//
+>>>>>>> 1494f3cb2f0a93b9aa79cb0b49221d48c7db17d2
 //     // 헤더 추가
 //     var headerRow = table.insertRow(0);
 //     var dateHeader = headerRow.insertCell(0);
 //     dateHeader.innerHTML = "선택한 날짜";
 //     var scheduleHeader = headerRow.insertCell(1);
 //     scheduleHeader.innerHTML = "일정 및 메모";
+<<<<<<< HEAD
 
+=======
+//
+>>>>>>> 1494f3cb2f0a93b9aa79cb0b49221d48c7db17d2
 //     // 데이터 추가
 //     var dataRow = table.insertRow(1);
 //     var dateCell = dataRow.insertCell(0);
 //     dateCell.innerHTML = month + " " + date + "일";
 //     var scheduleCell = dataRow.insertCell(1);
 //     scheduleCell.innerHTML = schedule;
+<<<<<<< HEAD
 
 //     // 기존 내용 지우고 새로운 테이블 추가
 //     outputDiv.innerHTML = "";
 //     outputDiv.appendChild(table);
 
+=======
+//
+//     // 기존 내용 지우고 새로운 테이블 추가
+//     outputDiv.innerHTML = "";
+//     outputDiv.appendChild(table);
+//
+>>>>>>> 1494f3cb2f0a93b9aa79cb0b49221d48c7db17d2
 // }

@@ -20,11 +20,18 @@ if ($conn->connect_error) {
 
 // POST 요청에서 학생 번호, 날짜, 메모 내용 가져오기
 $studentNumber = $_POST['studentNumber'];
+$password = $_POST['password'];
 $tablename = "student_" . $studentNumber;
 
 // 테이블이 이미 존재하는지 확인
 $tableExistsQuery = "SHOW TABLES LIKE '$tablename'";
+// usertable만들어여함 $UsertableExistsQuery = "SELECT * FROM USER WHERE studentNumber = $studentNumber";
+// usertable insert value쿼리도 써야함 아래에
+// usertable에서 유저를 찾고 있으면 return 없으면생성, user table에 학번과 password를 저장하고, table의 학번으로 table생성
+// USER가 많아질경우 한개의 TABLE에서 관리가 어려우니 파티셔닝 구현, 하지만 안할거
 $tableExistsResult = $conn->query($tableExistsQuery);
+
+
 if ($tableExistsResult->num_rows <= 0) {
     $createTableQuery = "CREATE TABLE $tablename (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
