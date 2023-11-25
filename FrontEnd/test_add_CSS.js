@@ -90,12 +90,14 @@ function read_data_todolist(date){
     let Temp;
     selectedDate = date;
     $.ajax({
-        url: 'samplecode.php',
-        type: 'get',
+        url: 'readMemo.php',
+        type: 'GET',
         dataType: 'json',
         async:  false,
         success: function (data){
-            Temp = data.memo
+            console.log(data);
+            console.log(data.memo);
+            Temp = data.memo;
         },
         error: function (e){
         }
@@ -105,7 +107,7 @@ function read_data_todolist(date){
     return Temp;
 }
 const OnSubmitStudentNumber = () => {
-    console.log("시발");
+    
     let studentNumber = document.querySelector("#studentNumber").value;
     if(localStorage.getItem('studentNumber')){
         localStorage.removeItem('studentNumber');
@@ -159,33 +161,33 @@ inputStudentNumber.addEventListener("keypress", function (event){
     // /input에서 number가 입력되고 enter가 눌리면 button을 의도적으로 클릭하게 해서 함수를 작동하게함
 });
 
- {
+//  {
 
-    var date = document.getElementById("monthSelect").value;
-    var schedule = document.getElementById("scheduleInput").value;
+//     var date = document.getElementById("monthSelect").value;
+//     var schedule = document.getElementById("scheduleInput").value;
 
-    var outputDiv = document.getElementById("output");
+//     var outputDiv = document.getElementById("output");
 
-    // 테이블 생성
-    var table = document.createElement("table");
-    table.style.width = "100%";
+//     // 테이블 생성
+//     var table = document.createElement("table");
+//     table.style.width = "100%";
 
-    // 헤더 추가
-    var headerRow = table.insertRow(0);
-    var dateHeader = headerRow.insertCell(0);
-    dateHeader.innerHTML = "선택한 날짜";
-    var scheduleHeader = headerRow.insertCell(1);
-    scheduleHeader.innerHTML = "일정 및 메모";
+//     // 헤더 추가
+//     var headerRow = table.insertRow(0);
+//     var dateHeader = headerRow.insertCell(0);
+//     dateHeader.innerHTML = "선택한 날짜";
+//     var scheduleHeader = headerRow.insertCell(1);
+//     scheduleHeader.innerHTML = "일정 및 메모";
 
-    // 데이터 추가
-    var dataRow = table.insertRow(1);
-    var dateCell = dataRow.insertCell(0);
-    dateCell.innerHTML = month + " " + date + "일";
-    var scheduleCell = dataRow.insertCell(1);
-    scheduleCell.innerHTML = schedule;
+//     // 데이터 추가
+//     var dataRow = table.insertRow(1);
+//     var dateCell = dataRow.insertCell(0);
+//     dateCell.innerHTML = month + " " + date + "일";
+//     var scheduleCell = dataRow.insertCell(1);
+//     scheduleCell.innerHTML = schedule;
 
-    // 기존 내용 지우고 새로운 테이블 추가
-    outputDiv.innerHTML = "";
-    outputDiv.appendChild(table);
+//     // 기존 내용 지우고 새로운 테이블 추가
+//     outputDiv.innerHTML = "";
+//     outputDiv.appendChild(table);
 
-}
+// }
