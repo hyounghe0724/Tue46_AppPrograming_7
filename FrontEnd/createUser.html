@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="test_loginpage.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- jQuery 라이브러리 추가 -->
 
-
+    
 </head>
+
 <body>
     <div id="content">
         <h2>SIGN IN</h2>
@@ -24,5 +25,31 @@
             <button type="submit">LOG IN</button>
         </form>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('button[type="submit"]').click(function (e) {
+                e.preventDefault(); 
+
+                
+                var id = $('#id').val();
+                var pw = $('#pw').val();
+
+                
+                $.ajax({
+                    type: 'POST',
+                    url: 'createUser.php', 
+                    data: { id: id, pw: pw },
+                    success: function(response) {
+                        console.log(response);
+                        if (response === '회원가입이 완료되었습니다.') {
+                            alert(response);
+                        } else {
+                            alert('회원가입에 실패했습니다. 다시 시도하세요.');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
