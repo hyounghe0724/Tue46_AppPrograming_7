@@ -16,6 +16,93 @@ const months = [
     "November",
     "December"
 ];
+
+const memoDelete = () => {
+    if(selectedDate === undefined || selectedDate === null) {
+        alert("날짜를 선택하지 않았습니다");
+        return;
+    }
+    $.ajax({
+        url: 'memoDelete.php',
+        type: 'POST',
+        data: {deleteDate : selectedDate},
+        dataType: 'json',
+        async:  false,
+        success: function (data){
+        },
+        error: function (e){
+            alert("선택한 날짜에 메모가 존재하지 않습니다")
+        }
+
+    });
+}
+
+function memoCreateAndUpdate(date){
+     onlyTextarea = document.querySelector("#onlyTextarea");
+    let Temp;
+    selectedDate = date;
+    $.ajax({
+        url: 'MemoCreateAndUpdate.php',
+        type: 'get',
+        dataType: 'json',
+        async:  false,
+        success: function (data){
+            Temp = data.memo
+        },
+        error: function (e){
+        }
+
+    })
+    onlyTextarea.value = Temp;
+    return Temp;
+}
+function read_data_todolist(){
+    let Temp;
+    selectedDate = date;
+    $.ajax({
+        url: '.php',
+        type: 'get',
+        data:{date:selectedDate},
+        dataType: 'json',
+        async:  false,
+        success: function (data){
+            Temp = data.memo
+        },
+        error: function (e){
+        }
+
+    })
+    onlyTextarea.value = Temp;
+    return Temp;
+} // memoRead
+const OnSubmitStudentNumber = () => { // login 할떄
+    let studentNumber = document.querySelector("#studentNumber").value;
+    let studentNumberPassword = document.querySelector("#studentPassword").value;
+    localStorage.clear();
+    $.ajax({ // DB내부에 이미 잇는지 확인
+        url:"validateStudentNumber.php",
+        type: 'post',
+        dataType: 'json',
+        data:{studentNumber: studentNumber, password: studentNumberPassword},
+        async: false,
+        success: function (vaildatedNumber) {
+            localStorage.setItem('studentNumber', vaildatedNumber);
+        },
+
+        error: function(data) {
+            if(data === null){
+                var confirmation = confirm("학번 정보가 없습니다. 생성하시겠습니까?");
+                if (confirmation) {
+                    location.href = 'createUser.html';
+                }
+                else {
+                    alert("정보 처리를 취소했습니다.");
+                }
+            }
+        }
+    })
+}
+
 const read_data_school_schedule = (month) => { // html parsing and ajax send
     let monthContainer = document.querySelector(".monthContainer");
     let containercercleNumber = document.querySelector(".container-cercle-number");
@@ -60,91 +147,11 @@ const read_data_school_schedule = (month) => { // html parsing and ajax send
 
     return
 }
-const delete_schedule = () => {
-    if(selectedDate === undefined || selectedDate === null) {
-        alert("날짜를 선택하지 않았습니다");
-        return;
-    }
-    $.ajax({
-        url: 'scheduleDelete.php',
-        type: 'POST',
-        data: {deleteDate : selectedDate},
-        dataType: 'json',
-        async:  false,
-        success: function (data){
-        },
-        error: function (e){
-            alert("선택한 날짜에 메모가 존재하지 않습니다")
-        }
-
-    });
-}
 const handleDateChange = (date) => {
     let deleteInput = document.querySelector("#deleteInput");
     if ( date !== undefined ){
         selectedDate = date;
     }
-}
-function read_data_todolist(date){
-     onlyTextarea = document.querySelector("#onlyTextarea");
-    let Temp;
-    selectedDate = date;
-    $.ajax({
-        url: 'samplecode.php',
-        type: 'get',
-        dataType: 'json',
-        async:  false,
-        success: function (data){
-            Temp = data.memo
-        },
-        error: function (e){
-        }
-
-    })
-    onlyTextarea.value = Temp;
-    return Temp;
-}
-const OnSubmitStudentNumber = () => {
-    let studentNumber = document.querySelector("#studentNumber").value;
-    if(localStorage.getItem('studentNumber')){
-        localStorage.removeItem('studentNumber');
-    }
-    $.ajax({ // DB내부에 이미 잇는지 확인
-        url:"validateStudentNumber.php",
-        type: 'post',
-        dataType: 'json',
-        data:{studentNumber: studentNumber},
-        async: false,
-        success: function (vaildatedNumber) {
-            localStorage.setItem('studentNumber', vaildatedNumber);
-        },
-
-        error: function(data) {
-            if(data === null){
-                var confirmation = confirm("학번 정보가 없습니다. 생성하시겠습니까?");
-                if (confirmation) {
-                    $.ajax({
-                        url:"createStudentNumber.php",
-                        type: 'post',
-                        dataType: 'json',
-                        data:{studentNumber: studentNumber},
-                        async: false,
-                        success: function (data) {
-                            console.log("Positive True");
-                        },
-                        error:function (data) {
-                            console.log("Positive false");
-                        }
-                    })
-                    alert("정보를 처리합니다.");
-                }
-                else {
-                    console.log("Negative true");
-                    alert("정보 처리를 취소했습니다.");
-                }
-            }
-        }
-    })
 }
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();

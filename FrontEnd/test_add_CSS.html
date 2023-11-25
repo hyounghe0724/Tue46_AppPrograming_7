@@ -51,9 +51,12 @@
      css 적용
     -->
 
+    <lable>enter your studentNumber</lable>
     <input id="studentNumber" type="number"  >
+    <label>enter your own password for the studentNumber</label>
+    <input id="studentPassword" type="password" >
     <button id="sendStuNum" onclick="OnSubmitStudentNumber()">enter your student number</button>
-
+    <a href="createUser.html">회원가입</a>
 
     
 
@@ -79,7 +82,7 @@
     <hr style="margin-left: 10px; margin-right: 10px;">
     <br><br>
 
-    <form action="samplecode.php" method="POST">
+    <form >
         <div class="display-flex">
             <input
             type="date"
@@ -87,7 +90,7 @@
             value="2023-11-21"
             name="date" required>
             <button type="button" class="small-button right-align"
-                    onclick="read_data_todolist(this.value)">일정 확인</button>
+                    onclick="read_data_todolist()">일정 확인</button>
         </div>
 
         <br>
@@ -96,7 +99,7 @@
         <br>
         <div class="display-flex">
 
-            <input class="small-button right-align" type="submit" value="메모 저장">
+            <input class="small-button right-align" type="submit" onclick="memoCreateAndUpdate(this.value)" value="메모 저장">
         </div>
 
 
@@ -104,7 +107,7 @@
         <input id="deleteInput"
                class="small-button"
                type="button"
-               onclick="delete_schedule()"
+               onclick="memoDelete()"
                value="메모 전체 삭제" >
     <br><br>
 

@@ -21,13 +21,13 @@ $studentNumber = $_POST['studentNumber'];
 $tablename = "student_" . $studentNumber;
 
 // 테이블이 이미 존재하는지 확인
-$tableExistsQuery = "SHOW TABLES LIKE '$tablename'";
+$tableExistsQuery = "select * from user where studentNumber = $studentNumber'";
 $tableExistsResult = $conn->query($tableExistsQuery);
 if ($tableExistsResult->num_rows > 0) {
-    echo $studentNumber;
+    echo true;
 }
 else{
-    echo null;
+    echo false;
 }
 // 데이터베이스 연결 닫기
 $conn->close();
