@@ -1,6 +1,7 @@
 var selectedDate; // input type= date 의 선택된 value값 저장
 let onlyTextarea;
 var inputStudentNumber = document.querySelector("#studentNumber");
+var loginBtn = document.querySelector("#sendStuNum");
 
 const months = [
     "January",
@@ -57,28 +58,30 @@ function memoCreateAndUpdate(date){ // 로컬스토리지의 유저정보를 가
     return Temp;
 }
 function read_data_todolist(){ // 유저 정보랑 같이 보냄, 없으면 return
+    let onlyTextarea = document.querySelector("#onlyTextarea");
     let Temp;
-    selectedDate = date;
     $.ajax({
         url: 'readMemo.php',
-        type: 'get',
+        type: 'post',
         data:{date:selectedDate},
         dataType: 'json',
         async:  false,
         success: function (data){
-            Temp = data.memo
+            Temp = data
         },
         error: function (e){
+            console.dir(e);
         }
 
     })
     onlyTextarea.value = Temp;
-    return Temp;
+    return;
 } // memoRead
 const validateStudentNumber = () => { // login 할떄
     let studentNumber = document.querySelector("#studentNumber").value;
     let studentNumberPassword = document.querySelector("#studentPassword").value;
     localStorage.clear();
+    console.log("?");
     $.ajax({ // DB내부에 이미 잇는지 확인
         url:"validateStudentNumber.php",
         type: 'POST',
@@ -86,14 +89,15 @@ const validateStudentNumber = () => { // login 할떄
         data:{studentNumber: studentNumber, password: studentNumberPassword},
         async: false,
         success: function (bool) {
+            console.log(bool);
             if(bool){
-                localStorage.setItem('studentNumber', vaildatedNumber);
+                localStorage.setItem('studentNumber', studentNumber);
                 alert("로그인 되었습니다");
             }
         },
 
         error: function(data) {
-            if(data === null){
+            if(!data){
                 var confirmation = confirm("학번 정보가 없습니다. 생성하시겠습니까?");
                 if (confirmation) {
                     location.href = 'createUser.html';
@@ -104,6 +108,7 @@ const validateStudentNumber = () => { // login 할떄
             }
         }
     })
+    return;
 }
 
 const read_data_school_schedule = (month) => { // html parsing and ajax send
@@ -157,7 +162,7 @@ const handleDateChange = (date) => {
     }
 }
 
-
+loginBtn.addEventListener("click", validateStudentNumber);
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();
     read_data_school_schedule(date.getMonth() + 1);

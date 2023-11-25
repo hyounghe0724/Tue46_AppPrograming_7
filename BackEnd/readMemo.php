@@ -13,45 +13,31 @@ if ($conn->connect_error) {
     die("데이터베이스 연결 실패: " . $conn->connect_error);
 }
 
-// POST 요청에서 날짜와 메모 내용 가져오기
-$date = $_POST['date']; // json_decode(file_get_contents("php://input"))->{"date"};
-$memo = $_POST['memo']; // json_decode(file_get_contents("php://input"))->{"memo"};
+// POST 요청에서 날짜 가져오기
+$date = $_POST['date'];
 
-// 날짜를 기반으로 메모가 이미 존재하는지 확인
-$sql = "SELECT * FROM todo_list WHERE date = '$date'"; // table name = todo_list
+// 날짜를 기반으로 메모 조회
+$sql = "SELECT * FROM memo WHERE date = '$date'";
 $result = $conn->query($sql);
 
-// if ($result->num_rows > 0) {
-//     // 메모가 이미 존재하면 업데이트
-//     $sql = "UPDATE todo_list SET memo = '$memo' WHERE date = '$date'";
-//     if ($conn->query($sql) === TRUE) {
-//         echo "메모 업데이트 성공";
-//     } else {
-//         echo "메모 업데이트 실패: " . $conn->error;
-//     }
-// } else {
-//     // 메모가 존재하지 않으면 새로 만듭니다.
-//     $sql = "INSERT INTO todo_list (date, memo) VALUES ('$date', '$memo')";
-//     if ($conn->query($sql) === TRUE) {
-//         echo "새로운 메모 생성 성공";
-//     } else {
-//         echo "메모 생성 실패: " . $conn->error;
-//     }
-// }
-while($row = mysqli_fetch_assoc($conn)) {
+// 결과를 담을 배열 초기화
+$memo = "";
 
-  $memo = $row['memo'];
+// 결과 확인
+if ($result->num_rows > 0) {
+    // 모든 레코드를 반복하여 가져옴
+    while ($row = $result->fetch_assoc()) {
+        // 각 레코드의 필드를 추출하여 배열에 추가
+        $memo = $row['memo'];
+    }
 }
 
-$Obj = new stdClass();
+// 결과 배열을 JSON 형식으로 변환
+$json = json_encode($memo);
 
-$Obj->memo = $memo;
-$JSON = json_encode($Obj);
-
-echo  $JSON;
+// JSON 출력
+echo $json;
 
 // 데이터베이스 연결 닫기
 $conn->close();
-
 ?>
-
