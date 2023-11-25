@@ -17,11 +17,11 @@ if ($conn->connect_error) {
 $date = $_POST['deleteDate'];
 
 // 날짜를 기반으로 메모가 이미 존재하는지 확인
-$sql = "SELECT * FROM todo_list WHERE date = '$date'"; // 테이블 이름 = todo_list
+$sql = "SELECT * FROM memo WHERE date = '$date'"; // 테이블 이름 = memo
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    $deleteSql = "DELETE FROM todo_list WHERE date = '$date'";
+    $deleteSql = "DELETE FROM memo WHERE date = '$date'";
     if ($conn->query($deleteSql) === TRUE) {
         echo "메모 삭제 성공";
     } else {

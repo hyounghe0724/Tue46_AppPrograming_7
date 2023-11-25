@@ -56,7 +56,7 @@ function memoCreateAndUpdate(date){
     onlyTextarea.value = Temp;
     return Temp;
 }
-function read_data_todolist(){
+function read_data_todolist(){ // 유저 정보랑 같이 보냄, 없으면 return
     let Temp;
     selectedDate = date;
     $.ajax({
@@ -75,18 +75,21 @@ function read_data_todolist(){
     onlyTextarea.value = Temp;
     return Temp;
 } // memoRead
-const OnSubmitStudentNumber = () => { // login 할떄
+const validateStudentNumber = () => { // login 할떄
     let studentNumber = document.querySelector("#studentNumber").value;
     let studentNumberPassword = document.querySelector("#studentPassword").value;
     localStorage.clear();
     $.ajax({ // DB내부에 이미 잇는지 확인
         url:"validateStudentNumber.php",
-        type: 'post',
+        type: 'POST',
         dataType: 'json',
         data:{studentNumber: studentNumber, password: studentNumberPassword},
         async: false,
-        success: function (vaildatedNumber) {
-            localStorage.setItem('studentNumber', vaildatedNumber);
+        success: function (bool) {
+            if(bool){
+                localStorage.setItem('studentNumber', vaildatedNumber);
+                alert("로그인 되었습니다");
+            }
         },
 
         error: function(data) {

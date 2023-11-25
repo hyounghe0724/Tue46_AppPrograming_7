@@ -22,8 +22,7 @@ $tablename = "student_" . $studentNumber;
 
 // 테이블이 이미 존재하는지 확인
 $tableExistsQuery = "select * from user where studentNumber = $studentNumber'";
-$tableExistsResult = $conn->query($tableExistsQuery);
-if ($tableExistsResult->num_rows > 0) {
+if ($conn->query($tableExistsQuery)->num_rows > 0) {
     echo true;
 }
 else{
