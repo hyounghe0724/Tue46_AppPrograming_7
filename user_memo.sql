@@ -7,11 +7,10 @@ CREATE TABLE `user` (
   `password` VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `memo` (
-  `studentNumber` INT,
-  `memo` VARCHAR(100) NOT NULL,
-  `date` DATE NOT NULL,
-  PRIMARY KEY (`studentNumber`),
-  CONSTRAINT `fk_memo_studentNumber` FOREIGN KEY (`studentNumber`) REFERENCES `user`(`studentNumber`)
+CREATE TABLE memo (
+  studentNumber INT,
+  memo VARCHAR(255),
+  date DATE,
+  FOREIGN KEY (studentNumber) REFERENCES user (studentNumber)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
