@@ -1,6 +1,9 @@
 var selectedDate; // input type= date 의 선택된 value값 저장
 let onlyTextarea;
 var inputStudentNumber = document.querySelector("#studentNumber");
+var loginBtn = document.querySelector("#sendStuNum");
+var form = document.querySelector("#memoForm");
+var formBtn = document.querySelector("#formBtn");
 
 const months = [
     "January",
@@ -37,43 +40,26 @@ const memoDelete = () => {
     });
 }
 
-function memoCreateAndUpdate(date){ // 로컬스토리지의 유저정보를 가져와서 post 지금은 postman 사용중
-     onlyTextarea = document.querySelector("#onlyTextarea");
-    let Temp;
-    selectedDate = date;
-    $.ajax({
-        url: 'MemoCreateAndUpdate.php',
-        type: 'get',
-        dataType: 'json',
-        async:  false,
-        success: function (data){
-            Temp = data.memo
-        },
-        error: function (e){
-        }
 
-    })
-    onlyTextarea.value = Temp;
-    return Temp;
-}
 function read_data_todolist(){ // 유저 정보랑 같이 보냄, 없으면 return
+    let onlyTextarea = document.querySelector("#onlyTextarea");
     let Temp;
-    selectedDate = date;
     $.ajax({
         url: 'readMemo.php',
-        type: 'get',
+        type: 'post',
         data:{date:selectedDate},
         dataType: 'json',
         async:  false,
         success: function (data){
-            Temp = data.memo
+            Temp = data
         },
         error: function (e){
+            console.dir(e);
         }
 
     })
     onlyTextarea.value = Temp;
-    return Temp;
+    return;
 } // memoRead
 const validateStudentNumber = () => { // login 할떄
     let studentNumber = document.querySelector("#studentNumber").value;
@@ -87,13 +73,13 @@ const validateStudentNumber = () => { // login 할떄
         async: false,
         success: function (bool) {
             if(bool){
-                localStorage.setItem('studentNumber', vaildatedNumber);
+                localStorage.setItem('studentNumber', studentNumber);
                 alert("로그인 되었습니다");
             }
         },
 
         error: function(data) {
-            if(data === null){
+            if(!data){
                 var confirmation = confirm("학번 정보가 없습니다. 생성하시겠습니까?");
                 if (confirmation) {
                     location.href = 'createUser.html';
@@ -104,6 +90,7 @@ const validateStudentNumber = () => { // login 할떄
             }
         }
     })
+    return;
 }
 
 const read_data_school_schedule = (month) => { // html parsing and ajax send
@@ -156,8 +143,16 @@ const handleDateChange = (date) => {
         selectedDate = date;
     }
 }
+formBtn.addEventListener("click", function (event){
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'studentNumber';
+    hiddenInput.value = parseInt(localStorage.getItem("studentNumber"));
+    document.getElementById('memoForm').appendChild(hiddenInput);
+    form.submit();
+});
 
-
+loginBtn.addEventListener("click", validateStudentNumber);
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();
     read_data_school_schedule(date.getMonth() + 1);
