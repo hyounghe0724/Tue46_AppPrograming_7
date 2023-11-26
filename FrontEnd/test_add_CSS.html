@@ -51,12 +51,13 @@
      css 적용
     -->
 
-    <lable>enter your studentNumber</lable>
+    <lable id="studentNumberLable">enter your studentNumber</lable>
     <input id="studentNumber" type="number"  >
-    <label>enter your own password for the studentNumber</label>
+    <label id="studentPasswordLable">enter your own password for the password</label>
     <input id="studentPassword" type="password" >
-    <button id="sendStuNum" onclick="validateStudentNumber()">enter your student number</button>
-    <a href="createUser.html">회원가입</a>
+    <button id="login"  >sign in</button>
+    <button id="logout" class="logInLogOutToggle" onclick="logout()">logout</button>
+    <a href="createUser.html">sign up</a>
 
     
 
@@ -82,7 +83,7 @@
     <hr style="margin-left: 10px; margin-right: 10px;">
     <br><br>
 
-    <form >
+    <form id="memoForm" action="MemoCreateAndUpdate.php" method="post">
         <div class="display-flex">
             <input
             type="date"
@@ -99,7 +100,7 @@
         <br>
         <div class="display-flex">
 
-            <input class="small-button right-align" type="submit" onclick="memoCreateAndUpdate(this.value)" value="메모 저장">
+            <input id ="formBtn" class="small-button right-align" type="button"  value="메모 저장">
         </div>
 
 

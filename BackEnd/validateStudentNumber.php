@@ -18,10 +18,10 @@ if ($conn->connect_error) {
 
 // POST 요청에서 학생 번호, 날짜, 메모 내용 가져오기
 $studentNumber = $_POST['studentNumber'];
-$tablename = "student_" . $studentNumber;
+$password = $_POST['password'];
 
 // 테이블이 이미 존재하는지 확인
-$tableExistsQuery = "select * from user where studentNumber = $studentNumber'";
+$tableExistsQuery = "select * from user where studentNumber = $studentNumber";
 if ($conn->query($tableExistsQuery)->num_rows > 0) {
     echo true;
 }

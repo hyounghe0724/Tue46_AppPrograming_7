@@ -23,7 +23,10 @@ $checkUserQuery = "SELECT * FROM user WHERE studentNumber = '$id'";
 $checkUserResult = $conn->query($checkUserQuery);
 
 if ($checkUserResult->num_rows > 0) {
-    echo "이미 회원 정보가 있습니다.";
+    echo "<script>
+        alert('이미 회원정보가 있습니다');
+        location.href = 'createUser.html';
+</script>";
 } else {
     // 비밀번호 해싱 (보안을 위해 사용자 비밀번호를 해싱하여 저장)
     $hashed_pw = password_hash($pw, PASSWORD_DEFAULT);
@@ -32,7 +35,10 @@ if ($checkUserResult->num_rows > 0) {
     $sql = "INSERT INTO user (studentNumber, password) VALUES ('$id', '$hashed_pw')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "회원가입이 완료되었습니다.";
+        echo "<script>
+        alert('회원가입이 완료 되었습니다');
+        location.href = 'test_add_CSS.html';
+    </script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

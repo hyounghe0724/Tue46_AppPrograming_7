@@ -14,14 +14,20 @@ if ($conn->connect_error) {
 }
 
 // POST 요청에서 날짜와 메모 내용 가져오기
-$studentNumber = json_decode($_POST['studentNumber'], true);
-$date = $_POST['date'];
+$studentNumber = $_POST['studentNumber'];
+$studentNumber = (int)$studentNumber;
 $memo = $_POST['memo'];
-
+$adsad = $_POST['date'];
+$date = date("y-m-d", strtotime("20231125"));
 // 날짜를 기반으로 메모가 이미 존재하는지 확인
 $sql = "SELECT * FROM memo WHERE date = '$date'"; // table name = memo
 $result = $conn->query($sql);
 
+$stnSql = "SELECT * FROM user WHERE studentNumber = $studentNumber";
+$stnResult = $conn->query($stnSql);
+
+$row = $stnResult->fetch_assoc();
+$studentNumber = $row['studentNumber'];
 if ($result->num_rows > 0) {
     // 메모가 이미 존재하면 업데이트
     $sql = "UPDATE memo SET memo = '$memo' WHERE date = '$date'";
@@ -31,8 +37,11 @@ if ($result->num_rows > 0) {
         echo "메모 업데이트 실패: " . $conn->error;
     }
 } else {
-    // 메모가 존재하지 않으면 새로 만듭니다.
-    $sql = "INSERT INTO memo (studentNumber,date, memo) VALUES ('$studentNumber','$date', '$memo')";
+
+    // 메모가 존재하지 않으면 새로 만듭니다
+    $sql = "INSERT INTO memo (studentNumber, date, memo)
+        VALUES ($studentNumber, '$date','$memo')";
+
     if ($conn->query($sql) === TRUE) {
         echo "새로운 메모 생성 성공";
     } else {
