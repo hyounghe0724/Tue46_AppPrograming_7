@@ -3,6 +3,7 @@ body{
     font-family: 'Roboto Slab', serif;
     width: 500px;
     height: 50vh;
+    display :flex;
 }
 
 .container {
