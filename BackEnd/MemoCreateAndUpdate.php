@@ -17,8 +17,9 @@ if ($conn->connect_error) {
 $studentNumber = $_POST['studentNumber'];
 $studentNumber = (int)$studentNumber;
 $memo = $_POST['memo'];
-$adsad = $_POST['date'];
-$date = date("y-m-d", strtotime("20231125"));
+$date = $_POST['date'];
+$convertedDate = str_replace("-", "", $date);
+$date = date("y-m-d", strtotime($convertedDate));
 // 날짜를 기반으로 메모가 이미 존재하는지 확인
 $sql = "SELECT * FROM memo WHERE date = '$date'"; // table name = memo
 $result = $conn->query($sql);
