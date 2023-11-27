@@ -29,35 +29,35 @@
             <button type="submit">JOIN</button>
         </form>
     </div>
-    <script>
-        $(document).ready(function () {
-            $('button[type="submit"]').click(function (e) {
-                e.preventDefault(); 
+<!--    <script>-->
+<!--        $(document).ready(function () {-->
+<!--            $('button[type="submit"]').click(function (e) {-->
+<!--                e.preventDefault(); -->
 
-                
-                var id = $('#id').val();
-                var pw = $('#pw').val();
+<!--                -->
+<!--                var id = $('#id').val();-->
+<!--                var pw = $('#pw').val();-->
 
-                if (!/^\d{8}$/.test(id)){
-                    alert('학번을 정확히 입력해주세요 \n ex) 8자리 숫자');
-                    return;
-                }
-                
-                $.ajax({
-                    type: 'POST',
-                    url: 'createUser.php', 
-                    data: { id: id, pw: pw },
-                    success: function(response) {
-                        console.log(response);
-                        if (response === '회원가입이 완료되었습니다.') {
-                            alert(response);
-                        } else {
-                            alert('회원가입에 실패했습니다. 다시 시도하세요.');
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+<!--                if (!/^\d{8}$/.test(id)){-->
+<!--                    alert('학번을 정확히 입력해주세요 \n ex) 8자리 숫자');-->
+<!--                    return;-->
+<!--                }-->
+<!--                -->
+<!--                $.ajax({-->
+<!--                    type: 'POST',-->
+<!--                    url: 'createUser.php', -->
+<!--                    data: { id: id, pw: pw },-->
+<!--                    success: function(response) {-->
+<!--                        console.log(response);-->
+<!--                        if (response === '회원가입이 완료되었습니다.') {-->
+<!--                            alert(response);-->
+<!--                        } else {-->
+<!--                            alert('회원가입에 실패했습니다. 다시 시도하세요.');-->
+<!--                        }-->
+<!--                    }-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
 </body>
 </html>
