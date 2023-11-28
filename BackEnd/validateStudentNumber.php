@@ -1,7 +1,4 @@
 <?php 
-// 학번을 세팅 할때 확인한다
-// 학번을 확인, 있으면 return해서 로컬스토리지 생성,
-
 // MySQL 서버 연결 설정
 $servername = "localhost";
 $username = "korea";
@@ -19,16 +16,28 @@ if ($conn->connect_error) {
 // POST 요청에서 학생 번호, 날짜, 메모 내용 가져오기
 $studentNumber = $_POST['studentNumber'];
 $studentNumber = (int)$studentNumber;
-$password = $_POST['password'];
-$hashed_pw = password_hash($password, PASSWORD_DEFAULT);
+$pw = $_POST['password'];
 
-$searchUserQuery = "select * from user where (studentNumber = $studentNumber) AND (password = '$hashed_pw')";
+
+$searchUserQuery = "select * from user where (studentNumber = $studentNumber)";
 // 테이블이 이미 존재하는지 확인
 $result = mysqli_query($conn, $searchUserQuery );
 if ($result) {
-    echo true;
+    $row = $result->fetch_assoc();
+    if (password_verify($pw, $row['password'])) {
+        echo true; // 로그인 성공
+    } else {
+//        echo "
+//        <script>
+//        alert('비밀번호가 틀립니다');
+//           </script>"; // 비밀번호 불일치
+        echo false;
+    }
 }
 else{
+//    echo "<script>
+//        alert('유저 정보가 존재하지 않습니다');
+//           </script>";
     echo false;
 }
 // 데이터베이스 연결 닫기

@@ -82,38 +82,36 @@ const validateStudentNumber = () => { // login 할떄
         location.reload();
         return;
     }
-
     let studentNumber = document.querySelector("#studentNumber").value;
     let studentNumberPassword = document.querySelector("#studentPassword").value;
     localStorage.clear();
     $.ajax({ // DB내부에 이미 잇는지 확인
         url:"validateStudentNumber.php",
         type: 'POST',
-        dataType: 'json',
+        dataType: 'JSON',
         data:{studentNumber: studentNumber, password: studentNumberPassword},
         async: false,
         success: function (bool) {
-            if(bool){
+            if(bool) {
                 localStorage.setItem('studentNumber', studentNumber);
                 isLogined = true;
                 studentNumber = null;
-                studentNumberPassword ="";
+                studentNumberPassword = "";
                 cssHandler(isLogined);
                 location.reload();
                 alert("로그인 되었습니다");
+            }else{
+                fetch("http://34.64.38.149/test_add_CSS.html", {
+                         method: 'GET',
+                         headers: {
+                             'Content-Type': 'application/json',
+                         }
+                     }
+                 ).then((response) => response.json()).then(data => console.log(data));
             }
         },
-
         error: function(data) {
-            if(!data){
-                var confirmation = confirm("학번 정보가 없습니다. 생성하시겠습니까?");
-                if (confirmation) {
-                    location.href = 'createUser.html';
-                }
-                else {
-                    alert("정보 처리를 취소했습니다.");
-                }
-            }
+            alert("서버 에러");
         }
     });
 }
@@ -123,6 +121,7 @@ const validateStudentNumber = () => { // login 할떄
 const logout = () => {
     if(!localStorage.getItem('studentNumber')){
         alert("로그인 정보가 없습니다");
+        location.reload();
         return;
     }else if (localStorage.getItem('studentNumber')){
         var confirmation = confirm("정말 로그 아웃 하시겠습니까?");

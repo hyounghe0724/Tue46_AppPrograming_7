@@ -19,6 +19,7 @@ $studentNumber = (int)$studentNumber;
 $memo = $_POST['memo'];
 $date = $_POST['date'];
 $convertedDate = str_replace("-", "", $date);
+$password = $_POST['password'];
 $date = date("y-m-d", strtotime($convertedDate));
 // 날짜를 기반으로 메모가 이미 존재하는지 확인
 $sql = "SELECT * FROM memo WHERE date = '$date'"; // table name = memo
