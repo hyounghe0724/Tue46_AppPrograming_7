@@ -221,7 +221,7 @@ formBtn.addEventListener("click", function (event){
     const hiddenInput = document.createElement('input');
     hiddenInput.type = 'hidden';
     hiddenInput.name = 'studentNumber';
-    hiddenInput.value = parseInt(localStorage.getItem("studentNumber"));
+    hiddenInput.value = localStorage.getItem("studentNumber");
     document.getElementById('memoForm').appendChild(hiddenInput);
     form.submit();
 });

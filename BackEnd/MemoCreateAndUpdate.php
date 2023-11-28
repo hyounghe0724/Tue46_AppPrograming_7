@@ -31,7 +31,7 @@ $row = $stnResult->fetch_assoc();
 $studentNumber = $row['studentNumber'];
 if ($result->num_rows > 0) {
     // 메모가 이미 존재하면 업데이트
-    $sql = "UPDATE memo SET memo = '$memo' WHERE date = '$date'";
+    $sql = "UPDATE memo SET memo = '$memo' WHERE date = '$date' AND studentNumber = $studentNumber";
     if ($conn->query($sql) === TRUE) {
         echo "메모 업데이트 성공";
     } else {

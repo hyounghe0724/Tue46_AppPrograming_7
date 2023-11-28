@@ -18,10 +18,11 @@ if ($conn->connect_error) {
 
 // POST 요청에서 학생 번호, 날짜, 메모 내용 가져오기
 $studentNumber = $_POST['studentNumber'];
+$studentNumber = (int)$studentNumber;
 $password = $_POST['password'];
+$hashed_pw = password_hash($password, PASSWORD_DEFAULT);
 
-// 테이블이 이미 존재하는지 확인
-$searchUserQuery = "select * from user where studentNumber = $studentNumber AND password = '$password'";
+$searchUserQuery = "select * from user where (studentNumber = $studentNumber) AND (password = '$hashed_pw')";
 $result = mysqli_query($conn, $searchUserQuery );
 if ($result) {
     echo true;

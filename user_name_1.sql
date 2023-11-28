@@ -8,9 +8,8 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE memo (
-  studentNumber INT,
+  studentNumber INT NOT NULL,
   memo VARCHAR(255),
-  date DATE,
+  date DATE NOT NULL,
   FOREIGN KEY (studentNumber) REFERENCES user (studentNumber)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
+);
