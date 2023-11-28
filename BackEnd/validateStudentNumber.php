@@ -21,8 +21,13 @@ $studentNumber = $_POST['studentNumber'];
 $studentNumber = (int)$studentNumber;
 $password = $_POST['password'];
 $hashed_pw = password_hash($password, PASSWORD_DEFAULT);
+<<<<<<< HEAD
 
 $searchUserQuery = "select * from user where (studentNumber = $studentNumber) AND (password = '$hashed_pw')";
+=======
+// 테이블이 이미 존재하는지 확인
+$searchUserQuery = "select * from user where studentNumber = $studentNumber AND password = '$hashed_pw'";
+>>>>>>> 4f3a5db1af1daa45f86bb560fcac70ea8f2075cd
 $result = mysqli_query($conn, $searchUserQuery );
 if ($result) {
     echo true;
