@@ -44,17 +44,17 @@ display: none; }
     overflow-x:auto;
     white-space:nowrap;
 
-
+    transition: background-color 0.5s ease;
     &:hover {
         background-color: #4379C6;
         color: white;      
     }
-    &:active {
-        background-color: #4379C6; /* 클릭 시 적용할 색상 */
-        color: white; 
-    }
+    
   }
-
+.active {
+    background-color: #4379C6; /* 클릭 시 적용할 색상 */
+    color: white; 
+}
 /* 달 스케쥴 컨테이너 가운데 정렬 */
 .monthContainer {
     display: flex;
