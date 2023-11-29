@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <title>Title</title>
     <link rel="stylesheet" href="project.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -9,122 +10,107 @@
 <body>
 
 
-    <center> <p class="title"> Sungkyul ToDoList</p></center>
-
-    <div class="main-month">
-
-        <div class="wrap" id="circlediv">
-            <div class="scroll__wrap">
-                <button class="circle " onclick="read_data_school_schedule(1)">1</button>
-                <button class="circle" onclick="read_data_school_schedule(2)">2</button>
-                <button class="circle" onclick="read_data_school_schedule(3)">3</button>
-                <button class="circle" onclick="read_data_school_schedule(4)">4</button>
-                <button class="circle" onclick="read_data_school_schedule(5)">5</button>
-                <button class="circle" onclick="read_data_school_schedule(6)">6</button>
-                <button class="circle" onclick="read_data_school_schedule(7)">7</button>
-                <button class="circle" onclick="read_data_school_schedule(8)">8</button>
-                <button class="circle" onclick="read_data_school_schedule(9)">9</button>
-                <button class="circle" onclick="read_data_school_schedule(10)">10</button>
-                <button class="circle" onclick="read_data_school_schedule(11)">11</button>
-                <button class="circle active" onclick="read_data_school_schedule(12)">12</button>
-            </div>
+    <center><h2> Sungkyul ToDoList</h2></center>
+    <div class="wrap" id="circlediv">
+        <div class="scroll__wrap">
+            <button class="circle " onclick="read_data_school_schedule(1)">1</button>
+            <button class="circle" onclick="read_data_school_schedule(2)">2</button>
+            <button class="circle" onclick="read_data_school_schedule(3)">3</button>
+            <button class="circle" onclick="read_data_school_schedule(4)">4</button>
+            <button class="circle" onclick="read_data_school_schedule(5)">5</button>
+            <button class="circle" onclick="read_data_school_schedule(6)">6</button>
+            <button class="circle" onclick="read_data_school_schedule(7)">7</button>
+            <button class="circle" onclick="read_data_school_schedule(8)">8</button>
+            <button class="circle" onclick="read_data_school_schedule(9)">9</button>
+            <button class="circle" onclick="read_data_school_schedule(10)">10</button>
+            <button class="circle" onclick="read_data_school_schedule(11)">11</button>
+            <button class="circle active" onclick="read_data_school_schedule(12)">12</button>
         </div>
-
-        <script>
-            var header = document.getElementById("circlediv");
-            var btns =header.getElementsByClassName("circle");
-            for(var i=0; i < btns.length; i++){
-                btns[i].addEventListener("click",function(){
-                var current = document.getElementsByClassName("active");
-                current[0].className = current[0].className.replace("active","");//원래있던 active 클래스 네임을 지운다 
-                this.className += " active";//클릭한 곳에 active 클래스를 추가 한다.
-            });
-        }
-        //클릭하면 색상 변경 자바 스크립트 
-        </script>
-
-        <!-- input 에 js함수 만들어야함
-        ajax ->  db -> 학번 vaildate 잇으면 localStorage 저장, 없으면 저장 하시겠습니까 alert() 후 저장 ( 학번에 맞는 table 생성 )
-
-        ! localStorage 에는 1개의 key-value 쌍의 studentNumber 만 존재 해야함
-
-        날짜를 선택하면 localStorage의 key 값과 날짜값을 php 코드에 전송, 테이블을 찾고 날짜를 찾아 반환.
-        ( 기존의 table name을 todoList가 아닌 studentNumber로 지정 )
-
-        css 적용
-        -->
-
-
-        <lable id="studentNumberLable">enter your studentNumber</lable><br><br>
-        <input id="studentNumber" type="number"><br>
-        <lable id="studentPasswordLable">enter your own password for the password</lable><br><br>
-        <input id="studentPassword" type="password"> <br><br>
-        <button id="login" >sign in</button>
-        <button id="logout" class="logInLogOutToggle" onclick="logout()">logout</button>
-        <a href="createUser.html">sign up</a><br><br>
-
-        
-
-        <div class="month-area">
-            <div class="month-Container">
-                <div class="month-container-left">
-                    <div class="container-cercle">
-                        <div class="container-cercle-number">
-                        </div>
-                    </div>
-                    <div class="month-title"></div>
-                </div>
-
-                <div class="month-container-right">
-                    
-                    <div id="hoho"></div>
-
-                    <div id="monthSchedule"></div>
-
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
-    <br><br><br><br>
+    <script>
+        var header = document.getElementById("circlediv");
+        var btns =header.getElementsByClassName("circle");
+        for(var i=0; i < btns.length; i++){
+            btns[i].addEventListener("click",function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace("active","");//원래있던 active 클래스 네임을 지운다 
+            this.className += " active";//클릭한 곳에 active 클래스를 추가 한다.
+        });
+    }
+    //클릭하면 색상 변경 자바 스크립트 
+    </script>
+
+    <!-- input 에 js함수 만들어야함
+    ajax ->  db -> 학번 vaildate 잇으면 localStorage 저장, 없으면 저장 하시겠습니까 alert() 후 저장 ( 학번에 맞는 table 생성 )
+
+    ! localStorage 에는 1개의 key-value 쌍의 studentNumber 만 존재 해야함
+
+    날짜를 선택하면 localStorage의 key 값과 날짜값을 php 코드에 전송, 테이블을 찾고 날짜를 찾아 반환.
+     ( 기존의 table name을 todoList가 아닌 studentNumber로 지정 )
+
+     css 적용
+    -->
+
+    <lable id="studentNumberLable">enter your studentNumber</lable><br>
+    <input id="studentNumber" type="number"><br>
+    <lable id="studentPasswordLable">enter your own password for the password</lable>
+    <input id="studentPassword" type="password"> <br><br>
+    <button id="login"  >sign in</button>
+    <button id="logout" class="logInLogOutToggle" onclick="logout()">logout</button>
+    <a href="createUser.html">sign up</a><br><br>
+
+    
+
+    <div class="monthContainer">
+        <div class="container">
+            <div class="container-cercle">
+                <div class="container-cercle-number">
+                </div>
+            </div>
+                <div class="month-title"></div>
+
+            <div class="container-left">
+                <div id="hoho">
+                </div>
+
+                <div id="monthSchedule"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <br><br>
     <hr style="margin-left: 10px; margin-right: 10px;">
     <br><br>
 
-    <div class="main-date">
-        <form id="memoForm" action="MemoCreateAndUpdate.php" method="post">
-            <div class="display-flex">
-                <input
-                type="date"
-                onchange="handleDateChange(this.value)"
-                value="2023-11-21"
-                name="date" required>
-                <button type="button" class="small-button right-align"
-                        onclick="read_data_todolist()">일정 확인</button>
-            </div>
+    <form id="memoForm" action="MemoCreateAndUpdate.php" method="post">
+        <div class="display-flex">
+            <input
+            type="date"
+            onchange="handleDateChange(this.value)"
+            value="2023-11-21"
+            name="date" required>
+            <button type="button" class="small-button right-align"
+                    onclick="read_data_todolist()">일정 확인</button>
+        </div>
 
-            <br>
-            
-            <center><textarea id="onlyTextarea" name="memo" rows="4" cols="50" placeholder="Memo area" required></textarea></center>
-            <br>
-            <div class="display-flex">
+        <br>
+        
+        <center><textarea id="onlyTextarea" name="memo" rows="4" cols="50" placeholder="Memo area" required></textarea></center>
+        <br>
+        <div class="display-flex">
 
-                <input id="deleteInput"
-                class="small-button"
-                type="button"
-                onclick="memoDelete()"
-                value="메모 전체 삭제" >
-
-                <input id ="formBtn" class="small-button right-align" type="button"  value="메모 저장">
-
-            </div>
+            <input id ="formBtn" class="small-button right-align" type="button"  value="메모 저장">
+        </div>
 
 
-        </form>
-
-    </div>
-
+    </form>
+        <input id="deleteInput"
+               class="small-button"
+               type="button"
+               onclick="memoDelete()"
+               value="메모 전체 삭제" >
     <br><br>
 
 </body>
