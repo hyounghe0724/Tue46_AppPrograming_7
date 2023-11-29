@@ -111,7 +111,7 @@ const validateStudentNumber = () => { // login 할떄
             }
         },
         error: function(data) {
-            alert("서버 에러");
+            console.dir(data);
         }
     });
 }
