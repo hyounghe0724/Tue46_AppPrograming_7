@@ -111,7 +111,7 @@ const validateStudentNumber = () => { // login 할떄
             }
         },
         error: function(data) {
-            return data;
+           alert(data.responseText);
         }
     });
 }

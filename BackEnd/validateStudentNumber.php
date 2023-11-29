@@ -22,20 +22,16 @@ $pw = $_POST['password'];
 $searchUserQuery = "select * from user where (studentNumber = $studentNumber)";
 // 테이블이 이미 존재하는지 확인
 $result = mysqli_query($conn, $searchUserQuery );
-if ($result) {
+if (mysqli_num_rows($result) > 0) {
     $row = $result->fetch_assoc();
     if (password_verify($pw, $row['password'])) {
         echo true; // 로그인 성공
     } else {
-        echo "
-        <script>
-        alert('비밀번호가 틀립니다');
-           </script>"; // 비밀번호 불일치
+        echo "비밀번호가 틀립니다";
     }
 }
 else{
-    echo '비밀번호가 틀립니다';;
-
+    echo '학번이 존재하지 않습니다';
 }
 // 데이터베이스 연결 닫기
 $conn->close();
