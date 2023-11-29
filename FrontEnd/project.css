@@ -376,6 +376,16 @@ textarea{
     display: none;
 }
 
+.logo {
+    max-width: 450px; /* 성결대 로고 사진의 크기*/
+    height: auto;
+    position: absolute; /* 새로운 위치를 설정하기 위해 position 속성 추가 */
+    bottom: 20px;
+    right: -20px; 
+    opacity: 0.6;
+    z-index: 9999;
+}
+
 
   
   
