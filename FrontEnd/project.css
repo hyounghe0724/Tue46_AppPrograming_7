@@ -1,24 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&family=Orbit&display=swap');
 
-body{
+html, body {
     font-family: 'Roboto Slab', serif;
+    font-size: 20px;
 
-    width: 500px;
-    height: 50vh;
+    width: 1170px;
+    height: 2532px;
+    position: relative;
+
 }
 
-.onDate{
+.title {
+    margin-bottom: 50px;
+    margin-top: 100px;
+    font-size: 80px;
+}
+
+.main-month {
+    width: 100% ;
+    height: 40% ;
+    text-align: center;
+}
+
+.main-date {
+    width: 100% ;
+    height: 40% ;
+}
+
+.onDate {
         font-family: 'IBM Plex Sans KR', sans-serif;
+}
 
-}
-.container {
-    margin: 0 auto;
-}
+
 
 /* 스크롤 범위 설정, 스크롤 생성 */
 .wrap {
-max-width:500px; 
+max-width: 760px; 
 margin:30px auto;
 }
 
@@ -36,13 +54,13 @@ display: none; }
     font-family: 'Roboto Slab', serif;
     position: relative;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
     text-align: center;
-    font-size: 18px;
+    font-size: 2em;
     font-weight: bold;
-    margin: 8px;
+    margin: 10px;
     overflow: hidden; /* 숫자부분 스크롤 생성 방지 */
     color: #000000;
     background: #DCEDFD;
@@ -58,52 +76,172 @@ display: none; }
     }
     
   }
+
 .active {
     background-color: #4379C6; /* 클릭 시 적용할 색상 */
     color: white; 
 }
-/* 달 스케쥴 컨테이너 가운데 정렬 */
-.monthContainer {
+
+.student {
     display: flex;
     justify-content: center;
 }
 
-/* 달 스케쥴 컨테이너 생성 */
-.container{
+#studentNumber{
+    display: block;
+    width: 60%; 
+    height: 3em;  
+    margin: 0 auto;
+}
 
+#studentPassword{
+    display: block;
+    width: 60%; 
+    height: 3em;
+    margin: 0 auto;
+}
+
+input[type="number"] {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif; 
+    font-size: 1em; /* 입력 필드 텍스트 크기 변경 */
+    color: black; /* 입력 필드 글자색 변경 */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="password"] {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif; 
+    font-size: 1em;
+    /* 비밀번호 필드에 추가적인 속성 적용 */
+    -webkit-text-fill-color: #4379C6; /* 웹킷 기반 브라우저용 */
+    caret-color: black; /* 캐럿 색상 설정 */
+}
+
+#login {
+    font-family: 'Roboto Slab', serif;
+    display: inline-block;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4379C6;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+}
+#login:hover {
+    background-color: #3268A8;
+}
+
+#logout {
+    font-family: 'Roboto Slab', serif;
+    display: inline-block;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4379C6;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+}
+#logout:hover {
+    background-color: #3268A8;
+}
+
+    #sendStuNum{
+        background-color:#4379C6;
+        color: #fff;
+        border:none; 
+        border-radius:5px; 
+        padding:10px;
+        min-width: 20%;
+        min-height:10%; 
+        font-size: 1.5em;
+      }
+
+/* 달 스케쥴 컨테이너 생성 */
+
+.month-area{
+    width: 100%;
+    height: 50%;
     position: relative;
-    width: 85%;
-    height: 180px;
+}
+
+.month-Container{
+
+    display: flex;
+    justify-content: flex-start;
     background: #DCEDFD;
+    width: 80%;
+    height: 460px;
     border-radius: 10px;
     border-style: solid;
     border: #DCEDFD;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
 }
 
 /* 컨테이너 오른쪽 옵션 */
-.container-left{
+.month-container-left{
+    width: 30%;
+    background: #DCEDFD;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-style: solid;
+    border-color: #DCEDFD;
+    float: left;
     position: relative;
-    right: -120px;
-    bottom: 48px;
-    align-content: center;
+}
+
+.month-container-right{
+
+    justify-content: flex-start;
     width: 70%;
-    height: 170px;
     background: white;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-style: solid;
     border-color: #DCEDFD;
+    float: left;
 }
 
 .container-cercle{
     font-family: 'Roboto Slab', serif;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-64%, -100%);
+
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 200px;
+    height: 200px;
     line-height: 50px;
-    font-size: 38px;
+    font-size: 5em;
     font-weight: bold;
     margin: 25px;
     overflow: hidden; /* 숫자부분 스크롤 생성 방지 */
@@ -124,14 +262,16 @@ display: none; }
 }
 
 .month-title{
-    position: relative;
     text-align: center;
-    width: 100px;
-    height: 50px;
-    top: 120px;
-    left: 10px;
+    width: 200px;
+    height: 100px;
+
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-weight: bold;
-    font-size: large;
+    font-size: 40px;
     white-space:pre-wrap;
     color: #4379C6;
 }
@@ -143,73 +283,13 @@ display: none; }
     #hoho{
     height: 85%;
     margin: 15px;
-    /*overflow-y: scroll;*/
+    overflow-y: scroll;
     }
 
 
 #monthSchedule{
     white-space:pre-wrap;
     margin: 10px;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-family: 'Roboto Slab', serif; 
-    font-size: 16px; /* 입력 필드 텍스트 크기 변경 */
-    color: black; /* 입력 필드 글자색 변경 */
-}
-
-input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-family: 'Roboto Slab', serif; 
-    font-size: 16px;
-    /* 비밀번호 필드에 추가적인 속성 적용 */
-    -webkit-text-fill-color: #4379C6; /* 웹킷 기반 브라우저용 */
-    caret-color: black; /* 캐럿 색상 설정 */
-}
-
-#login {
-    font-family: 'Roboto Slab', serif;
-    display: inline-block;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4379C6;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-#login:hover {
-    background-color: #3268A8;
-}
-
-#logout {
-    font-family: 'Roboto Slab', serif;
-    display: inline-block;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4379C6;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-#logout:hover {
-    background-color: #3268A8;
 }
 
 a {
@@ -221,20 +301,26 @@ a {
     border-radius: 5px;
     font-family: 'Roboto Slab', serif;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 a:hover {
     background-color: #3268A8;
 }
 
+
 input[type='date']{
     position: relative;
+    width: 50%;
     padding-left: 10px;
     padding-right: 10px;
 
     border:1px solid grey;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 60px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 input[type='date']::before {
@@ -243,7 +329,8 @@ width: 100%;
 }
 
 textarea{
-    
+    width: 80%;
+    height: 600px;
     position: relative;
     padding: 10px;
 
@@ -251,6 +338,10 @@ textarea{
     border-radius: 5px;
 
     box-sizing: border-box;
+
+    font-size: 1.8em;
+
+    margin: 20px;
 }
 
 .small-button{
@@ -262,10 +353,13 @@ textarea{
     border:none; 
     border-radius:5px; 
     padding:15px;
-    min-height:30px; 
-    min-width: 120px;
-    margin-left: 10px;
-    margin-right: 10px;
+    height: 30%; 
+    width: 24%;
+    font-size: 1.8em; 
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 
 }
 
