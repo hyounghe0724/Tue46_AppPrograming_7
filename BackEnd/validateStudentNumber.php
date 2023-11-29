@@ -27,18 +27,15 @@ if ($result) {
     if (password_verify($pw, $row['password'])) {
         echo true; // 로그인 성공
     } else {
-//        echo "
-//        <script>
-//        alert('비밀번호가 틀립니다');
-//           </script>"; // 비밀번호 불일치
-        echo false;
+        echo "
+        <script>
+        alert('비밀번호가 틀립니다');
+           </script>"; // 비밀번호 불일치
     }
 }
 else{
-//    echo "<script>
-//        alert('유저 정보가 존재하지 않습니다');
-//           </script>";
-    echo false;
+    echo '비밀번호가 틀립니다';;
+
 }
 // 데이터베이스 연결 닫기
 $conn->close();
