@@ -30,6 +30,8 @@ if ($result->num_rows > 0) {
         // 각 레코드의 필드를 추출하여 배열에 추가
         $memo = $row['memo'];
     }
+}else{
+    $memo = "";
 }
 
 // 결과 배열을 JSON 형식으로 변환
