@@ -2,8 +2,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 페이지</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=yes">
+    
+        <title>회원가입 페이지</title>
     <link rel="stylesheet" href="test_loginpage.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- jQuery 라이브러리 추가 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,49 +17,20 @@
         <h2>SIGN UP</h2>
         <form action="createUser.php" method="POST">
 
-            <div>
+            <div><br><br><br><br>
             <label for="id">STUDENT NUMBER </label>
             
             <input type="text" id="id" name="id" placeholder="학번" required>
             </div>  
             
-
+            
             <label for="pw">PASSWORD</label>
             <input type="password" id="pw" name="pw" placeholder="비밀번호">
 
-
+            <br><br><br><br><br><br><br>
             <button type="submit">JOIN</button>
         </form>
     </div>
-<!--    <script>-->
-<!--        $(document).ready(function () {-->
-<!--            $('button[type="submit"]').click(function (e) {-->
-<!--                e.preventDefault(); -->
 
-<!--                -->
-<!--                var id = $('#id').val();-->
-<!--                var pw = $('#pw').val();-->
-
-<!--                if (!/^\d{8}$/.test(id)){-->
-<!--                    alert('학번을 정확히 입력해주세요 \n ex) 8자리 숫자');-->
-<!--                    return;-->
-<!--                }-->
-<!--                -->
-<!--                $.ajax({-->
-<!--                    type: 'POST',-->
-<!--                    url: 'createUser.php', -->
-<!--                    data: { id: id, pw: pw },-->
-<!--                    success: function(response) {-->
-<!--                        console.log(response);-->
-<!--                        if (response === '회원가입이 완료되었습니다.') {-->
-<!--                            alert(response);-->
-<!--                        } else {-->
-<!--                            alert('회원가입에 실패했습니다. 다시 시도하세요.');-->
-<!--                        }-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
 </body>
 </html>

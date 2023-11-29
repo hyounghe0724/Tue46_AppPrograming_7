@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&family=Orbit&display=swap');
+
+
+
 body {
     font-family: 'Roboto Slab', serif;
-    width: 500px;
+    width: 100%;
     height: 50vh;
+    padding-top: 0%;
+    margin-left:0%;
     display: flex;
     
 }
@@ -52,8 +57,10 @@ label {
 
 #content {
     font-family: 'Roboto Slab', serif;
-    margin-left: 180px;
+    margin-left: 0%;
     padding: 20px;
+    width: 100%;
+    height: 50vh;
     background-color: white; /* 배경색 변경 */
 }
 
