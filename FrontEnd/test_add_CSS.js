@@ -185,7 +185,7 @@ const handleDateChange = (date) => {
     let deleteInput = document.querySelector("#deleteInput");
     if ( date !== undefined ){
         selectedDate = date;
-        return selectedDate;
+        read_data_todolist();
     }
 }
 const cssHandler = (bool) => { // login 되어있나에 따라 display : none; 적용 여부 핸들러

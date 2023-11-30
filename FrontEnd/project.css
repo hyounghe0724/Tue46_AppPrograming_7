@@ -360,6 +360,7 @@ textarea{
     margin-right: 60px;
     margin-top: 50px;
     margin-bottom: 50px;
+    
 
 }
 
@@ -376,6 +377,16 @@ textarea{
     display: none;
 }
 
+.logo {
+    width: 120%;
+    max-width: none;
+    height: auto;
+    position: absolute;
+    bottom: 415px; /* 아래쪽 여백을 줄여 로고를 위로 올림 */
+    right: -280px;
+    opacity: 0.2;
+    z-index: 99;
+}
 
   
   
