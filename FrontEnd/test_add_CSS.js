@@ -42,9 +42,11 @@ const memoDelete = () => {
         dataType: 'json',
         async:  false,
         success: function (data){
+            alert(data.responseText);
+            location.reload();
         },
         error: function (e){
-            alert("선택한 날짜에 메모가 존재하지 않습니다")
+            alert(e.responseText);
         }
 
     });
@@ -166,9 +168,6 @@ const read_data_school_schedule = (month, button) => { // html parsing and ajax 
             var parser = new DOMParser();
             doc = parser.parseFromString(data, 'text/html').querySelector('ul').getElementsByTagName('li');
         },
-
-
-
         error: function(data) {
         }
     });
@@ -185,6 +184,7 @@ const handleDateChange = (date) => {
     if ( date !== undefined ){
         selectedDate = date;
         document.getElementById("selectedDate").textContent = "선택한 날짜: " + selectedDate;
+        read_data_todolist(selectedDate);
     }
 }
 const cssHandler = (bool) => { // login 되어있나에 따라 display : none; 적용 여부 핸들러
@@ -229,7 +229,7 @@ loginBtn.addEventListener("click", validateStudentNumber);
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const buttons = document.getElementsByClassName("circle");
     const date = new Date();
-    read_data_school_schedule(date.getMonth() + 1, buttons[date.getMonth() + 1]);
+    read_data_school_schedule(date.getMonth() + 1, buttons[date.getMonth()]);
     // 현재의 달 에맞는 N번쨰 버튼.click(date);
     cssHandler(isLogined);
 });
@@ -238,5 +238,5 @@ inputStudentNumber.addEventListener("keypress", function (event){
         event.preventDefault();
         document.getElementById("login").click();
     }
-    // /input에서 number가 입력되고 enter가 눌리면 button을 의도적으로 클릭하게 해서 함수를 작동하게함
+    // /input에서 number가 입력되고 enter가 눌리면 button을 의도적으로 클릭q하게 해서 함수를 작동하게함
 });
