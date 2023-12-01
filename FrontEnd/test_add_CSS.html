@@ -15,18 +15,18 @@
 
         <div class="wrap" id="circlediv">
             <div class="scroll__wrap">
-                <button class="circle " onclick="read_data_school_schedule(1, this)">1</button>
-                <button class="circle" onclick="read_data_school_schedule(2, this)">2</button>
-                <button class="circle" onclick="read_data_school_schedule(3, this)">3</button>
-                <button class="circle" onclick="read_data_school_schedule(4, this)">4</button>
-                <button class="circle" onclick="read_data_school_schedule(5, this)">5</button>
-                <button class="circle" onclick="read_data_school_schedule(6, this)">6</button>
-                <button class="circle" onclick="read_data_school_schedule(7, this)">7</button>
-                <button class="circle" onclick="read_data_school_schedule(8, this)">8</button>
-                <button class="circle" onclick="read_data_school_schedule(9, this)">9</button>
-                <button class="circle" onclick="read_data_school_schedule(10, this)">10</button>
-                <button class="circle" onclick="read_data_school_schedule(11, this)">11</button>
-                <button class="circle" onclick="read_data_school_schedule(12, this)">12</button>
+                <button class="circle " onclick="read_data_school_schedule(1)">1</button>
+                <button class="circle" onclick="read_data_school_schedule(2)">2</button>
+                <button class="circle" onclick="read_data_school_schedule(3)">3</button>
+                <button class="circle" onclick="read_data_school_schedule(4)">4</button>
+                <button class="circle" onclick="read_data_school_schedule(5)">5</button>
+                <button class="circle" onclick="read_data_school_schedule(6)">6</button>
+                <button class="circle" onclick="read_data_school_schedule(7)">7</button>
+                <button class="circle" onclick="read_data_school_schedule(8)">8</button>
+                <button class="circle" onclick="read_data_school_schedule(9)">9</button>
+                <button class="circle" onclick="read_data_school_schedule(10)">10</button>
+                <button class="circle" onclick="read_data_school_schedule(11)">11</button>
+                <button class="circle active" onclick="read_data_school_schedule(12)">12</button>
             </div>
         </div>
 
@@ -59,7 +59,7 @@
         <input id="studentNumber" type="number"><br>
         <lable id="studentPasswordLable">enter your own password for the password</lable><br><br>
         <input id="studentPassword" type="password"> <br><br>
-        <button id="login" >sign in</button>
+        <button id="login" >log in</button>
         <button id="logout" class="logInLogOutToggle" onclick="logout()">logout</button>
         <a href="createUser.html">sign up</a><br><br>
 
@@ -94,12 +94,12 @@
 
     <div class="main-date">
         <form id="memoForm" action="MemoCreateAndUpdate.php" method="post">
-            <p id="selectedDate"></p>
             <div class="display-flex">
                 <input
                 type="date"
-                id="dateInput"
+                date-placeholder='Select date'
                 onchange="handleDateChange(this.value)"
+                value="날짜를 선택해주세요"
                 name="date" required>
                 <button type="button" class="small-button right-align"
                         onclick="read_data_todolist()">일정 확인</button>
@@ -117,10 +117,10 @@
                 onclick="memoDelete()"
                 value="메모 전체 삭제" >
 
-                <input id ="formBtn" class="small-button  right-align" type="button"  value="메모 저장">
+                <input id ="formBtn" class="sm small-button right-align" type="button"  value="메모 저장">
 
             </div>
-            <img src="https://drive.google.com=view&id=1fIB9bQ08ts8D5KkV4XwoydmYPxnba5WW" alt="Sungkyul University Logo" class="logo">
+            <img src="https://drive.google.com =view&id=1fIB9bQ08ts8D5KkV4XwoydmYPxnba5WW" alt="Sungkyul University Logo" class="logo">
 
 
         </form>
