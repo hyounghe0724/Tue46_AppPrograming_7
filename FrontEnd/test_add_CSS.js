@@ -230,6 +230,7 @@ loginBtn.addEventListener("click", validateStudentNumber);
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();
     read_data_school_schedule(date.getMonth() + 1);
+    // 현재의 달 에맞는 N번쨰 버튼.click(date);
     cssHandler(isLogined);
 });
 inputStudentNumber.addEventListener("keypress", function (event){
