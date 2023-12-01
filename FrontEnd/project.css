@@ -54,7 +54,10 @@ margin:30px auto;
 .scroll__wrap {
 overflow-x:auto;
 white-space:nowrap;
+scroll-behavior: smooth;
+
 }
+
 
 /* 스크롤 숨김 */
 .scroll__wrap::-webkit-scrollbar{

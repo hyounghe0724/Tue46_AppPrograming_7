@@ -15,10 +15,10 @@
 
         <div class="arrow">
         <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-        <svg fill="#D3D3D3" width="50px" height="50px" viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/>
+        <svg fill="#D3D3D3" width="50px" height="50px" id="leftsvg" viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg" onclick='moveLeft()'><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/>
         </svg>
         <div class="wrap" id="circlediv">
-            <div class="scroll__wrap">
+            <div class="scroll__wrap" id="circlescroll">
                 <button class="circle " onclick="read_data_school_schedule(1)">1</button>
                 <button class="circle" onclick="read_data_school_schedule(2)">2</button>
                 <button class="circle" onclick="read_data_school_schedule(3)">3</button>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <?xml version="1.0" encoding="utf-8"?>
-        <svg fill="#D3D3D3" width="50px" height="50px" viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/>
+        <svg fill="#D3D3D3" width="50px" height="50px" id="rigthsvg"viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg" onclick="moveRight()"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/>
         </svg>
         </div>
 
@@ -50,6 +50,25 @@
         }
         //클릭하면 색상 변경 자바 스크립트 
         </script>
+
+        <script>//달 양옆 화살표 버튼 누르면 부드럽게 스크롤
+        const moveLeft = () => {
+        const circleScroll = document.getElementById('circlescroll');
+        if (circleScroll) {
+            circleScroll.scrollLeft -= circleScroll.offsetWidth;
+            behavior:'smooth';
+        }   
+        };
+
+        const moveRight = () => {
+        const circleScroll = document.getElementById('circlescroll');
+        if (circleScroll) {
+            circleScroll.scrollLeft += circleScroll.offsetWidth;
+            behavior:'smooth';
+        }
+        };
+        </script>
+
 
         <!-- input 에 js함수 만들어야함
         ajax ->  db -> 학번 vaildate 잇으면 localStorage 저장, 없으면 저장 하시겠습니까 alert() 후 저장 ( 학번에 맞는 table 생성 )
