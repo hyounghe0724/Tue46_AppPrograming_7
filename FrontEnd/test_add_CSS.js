@@ -229,7 +229,7 @@ formBtn.addEventListener("click", function (event){
 loginBtn.addEventListener("click", validateStudentNumber);
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();
-    read_data_school_schedule(date.getMonth() + 1);
+    read_data_school_schedule(date.getMonth() + 1)
     cssHandler(isLogined);
 });
 inputStudentNumber.addEventListener("keypress", function (event){

@@ -34,9 +34,15 @@ if ($result->num_rows > 0) {
     // 메모가 이미 존재하면 업데이트
     $sql = "UPDATE memo SET memo = '$memo' WHERE date = '$date' AND studentNumber = $studentNumber";
     if ($conn->query($sql) === TRUE) {
-        echo "메모 업데이트 성공";
+        echo "<script>
+        alert('메모 업데이트 성공');
+        location.href = 'test_add_CSS.html';
+    </script>";
     } else {
-        echo "메모 업데이트 실패: " . $conn->error;
+        echo "<script>
+        alert('메모 업데이트 실패');
+        location.href = 'test_add_CSS.html';
+    </script>";;
     }
 } else {
 
@@ -45,9 +51,15 @@ if ($result->num_rows > 0) {
         VALUES ($studentNumber, '$date','$memo')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "새로운 메모 생성 성공";
+        echo "<script>
+        alert('새로운 메모가 생성되었습니다');
+        location.href = 'test_add_CSS.html';
+    </script>";
     } else {
-        echo "메모 생성 실패: " . $conn->error;
+        echo "<script>
+        alert('메모 생성을 실패 하였습니다.');
+        location.href = 'test_add_CSS.html';
+    </script>";
     }
 }
 // echo로 작성된 메모 return, 또는 memo를 객체로 가져오는 php파일 작성
