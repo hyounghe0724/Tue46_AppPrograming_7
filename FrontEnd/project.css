@@ -26,6 +26,7 @@ html, body {
 .main-date {
     width: 100% ;
     height: 40% ;
+    font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 .onDate {
@@ -327,6 +328,11 @@ textarea{
     margin: 20px;
 }
 
+textarea::placeholder{
+    font-family: 'Roboto Slab', serif;
+
+}
+
 .small-button{
 
     position: relative;
@@ -350,6 +356,7 @@ textarea{
 .display-flex {
     display: flex;
     justify-content: flex-start;
+    
 }
 
 .right-align{
@@ -378,5 +385,6 @@ textarea{
     width: 500px;
     height: 30px;
 }
-  
+
+
   
