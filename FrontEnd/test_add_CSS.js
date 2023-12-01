@@ -137,7 +137,7 @@ const logout = () => {
     return;
 }
 
-const read_data_school_schedule = (month) => { // html parsing and ajax send
+const read_data_school_schedule = (month, button) => { // html parsing and ajax send
 
     let containercercleNumber = document.querySelector(".container-cercle-number");
     let monthTitle = document.querySelector(".month-title");
@@ -178,8 +178,8 @@ const read_data_school_schedule = (month) => { // html parsing and ajax send
     containercercleNumber.appendChild(classNameNumMonth);
     monthTitle.innerText = `${months[month - 1]}`; // 월 영문을 month-title에 text로 삽입
     hoho.appendChild(classNameDesc);
-
-    return
+    button.classList.add("active");
+    return;
 }
 const handleDateChange = (date) => {
     if ( date !== undefined ){
@@ -227,10 +227,10 @@ formBtn.addEventListener("click", function (event){
 
 loginBtn.addEventListener("click", validateStudentNumber);
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
+    const buttons = document.getElementsByClassName("circle");
     const date = new Date();
-    read_data_school_schedule(date.getMonth() + 1);
+    read_data_school_schedule(date.getMonth() + 1, buttons[date.getMonth() + 1]);
     // 현재의 달 에맞는 N번쨰 버튼.click(date);
-    read_data_school_schedule(date.getMonth() + 1)
     cssHandler(isLogined);
 });
 inputStudentNumber.addEventListener("keypress", function (event){
