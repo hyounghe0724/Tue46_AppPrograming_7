@@ -229,11 +229,8 @@ formBtn.addEventListener("click", function (event){
 loginBtn.addEventListener("click", validateStudentNumber);
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const date = new Date();
-<<<<<<< HEAD
     read_data_school_schedule(date.getMonth() + 1);
     // 현재의 달 에맞는 N번쨰 버튼.click(date);
-=======
->>>>>>> b78324b302d5612dac0e3ff84b48012f4dc34d57
     read_data_school_schedule(date.getMonth() + 1)
     cssHandler(isLogined);
 });
