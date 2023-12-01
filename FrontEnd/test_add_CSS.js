@@ -38,7 +38,7 @@ const memoDelete = () => {
     $.ajax({
         url: 'memoDelete.php',
         type: 'POST',
-        data: {deleteDate : selectedDate},
+        data: {deleteDate : selectedDate, studentNumber: localStorage.getItem("studentNumber")},
         dataType: 'json',
         async:  false,
         success: function (data){
@@ -231,6 +231,7 @@ window.addEventListener('DOMContentLoaded', function () { // dom load at active 
     const date = new Date();
     read_data_school_schedule(date.getMonth() + 1);
     // 현재의 달 에맞는 N번쨰 버튼.click(date);
+    read_data_school_schedule(date.getMonth() + 1)
     cssHandler(isLogined);
 });
 inputStudentNumber.addEventListener("keypress", function (event){

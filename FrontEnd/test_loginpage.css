@@ -5,8 +5,8 @@
 
 body {
     font-family: 'Roboto Slab', serif;
-    width: 100%;
-    height: 50vh;
+    width: 1170px;
+    height: 2532px;
     padding-top: 0%;
     margin-left:0%;
     display: flex;
@@ -59,8 +59,8 @@ label {
     font-family: 'Roboto Slab', serif;
     margin-left: 0%;
     padding: 20px;
-    width: 100%;
-    height: 50vh;
+    width: 1170px;
+    height: 2532px;
     background-color: white; /* 배경색 변경 */
 }
 
@@ -105,4 +105,19 @@ button {
 button:hover {
     background: linear-gradient(to right, #3268A8, #4379C6); /* 호버 시 색상 변경 */
     transform: translateY(0); /* 호버 시 약간 들어간 느낌 해제 */
+}
+a{
+    color: #4379C6;
+    margin-left: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 5px;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, padding 0.2s ease;
+    
+}
+a:hover{
+    background-color: rgb(245, 245, 245);
+    padding :4px;
 }
