@@ -30,6 +30,12 @@ $stnResult = $conn->query($stnSql);
 
 $row = $stnResult->fetch_assoc();
 $studentNumber = $row['studentNumber']; // 학번 정보가 없으면 response해줌
+if(!$studentNumber){
+    echo "<script>
+        alert('학번 정보가 없습니다');
+        location.href = 'test_add_CSS.html';
+    </script>";
+}
 if ($result->num_rows > 0) {
     // 메모가 이미 존재하면 업데이트
     $sql = "UPDATE memo SET memo = '$memo' WHERE date = '$date' AND studentNumber = $studentNumber";

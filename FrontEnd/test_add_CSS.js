@@ -38,7 +38,7 @@ const memoDelete = () => {
     $.ajax({
         url: 'memoDelete.php',
         type: 'POST',
-        data: {deleteDate : selectedDate},
+        data: {deleteDate : selectedDate, studentNumber: localStorage.getItem("studentNumber")},
         dataType: 'json',
         async:  false,
         success: function (data){
