@@ -62,7 +62,7 @@ function read_data_todolist(){ // 유저 정보랑 같이 보냄, 없으면 retu
     $.ajax({
         url: 'readMemo.php',
         type: 'post',
-        data:{date:selectedDate},
+        data:{date:selectedDate, studentNumber: localStorage.getItem("studentNumber")},
         dataType: 'json',
         async:  false,
         success: function (data){
@@ -182,10 +182,9 @@ const read_data_school_schedule = (month) => { // html parsing and ajax send
     return
 }
 const handleDateChange = (date) => {
-    let deleteInput = document.querySelector("#deleteInput");
     if ( date !== undefined ){
         selectedDate = date;
-        read_data_todolist();
+        document.getElementById("selectedDate").textContent = "선택한 날짜: " + selectedDate;
     }
 }
 const cssHandler = (bool) => { // login 되어있나에 따라 display : none; 적용 여부 핸들러

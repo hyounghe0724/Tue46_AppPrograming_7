@@ -94,11 +94,12 @@
 
     <div class="main-date">
         <form id="memoForm" action="MemoCreateAndUpdate.php" method="post">
+            <p id="selectedDate"></p>
             <div class="display-flex">
                 <input
                 type="date"
+                id="dateInput"
                 onchange="handleDateChange(this.value)"
-                value="날짜를 선택해주세요"
                 name="date" required>
                 <button type="button" class="small-button right-align"
                         onclick="read_data_todolist()">일정 확인</button>
@@ -116,10 +117,10 @@
                 onclick="memoDelete()"
                 value="메모 전체 삭제" >
 
-                <input id ="formBtn" class="sm  right-align" type="button"  value="메모 저장">
+                <input id ="formBtn" class="small-button  right-align" type="button"  value="메모 저장">
 
             </div>
-            <img src="https://drive.google.com =view&id=1fIB9bQ08ts8D5KkV4XwoydmYPxnba5WW" alt="Sungkyul University Logo" class="logo">
+            <img src="https://drive.google.com=view&id=1fIB9bQ08ts8D5KkV4XwoydmYPxnba5WW" alt="Sungkyul University Logo" class="logo">
 
 
         </form>

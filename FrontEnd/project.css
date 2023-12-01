@@ -88,15 +88,13 @@ display: none; }
 }
 
 #studentNumber{
-    display: block;
-    width: 60%; 
+    width: 60%;
     height: 3em;  
     margin: 0 auto;
 }
 
 #studentPassword{
-    display: block;
-    width: 60%; 
+    width: 60%;
     height: 3em;
     margin: 0 auto;
 }
@@ -119,22 +117,10 @@ input[type="number"]::-webkit-inner-spin-button {
     appearance: none;
 }
 
-input[type="password"] {
-    width: 60%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-family: 'Roboto Slab', serif; 
-    font-size: 1em;
-    /* 비밀번호 필드에 추가적인 속성 적용 */
-    -webkit-text-fill-color: #4379C6; /* 웹킷 기반 브라우저용 */
-    caret-color: black; /* 캐럿 색상 설정 */
-}
+
 
 #login {
     font-family: 'Roboto Slab', serif;
-    display: inline-block;
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -153,7 +139,6 @@ input[type="password"] {
 
 #logout {
     font-family: 'Roboto Slab', serif;
-    display: inline-block;
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -312,14 +297,12 @@ a:hover {
 
 input[type='date']{
     position: relative;
-    width: 50%;
+    width: 30%;
     padding-left: 10px;
     padding-right: 10px;
-
     border:1px solid grey;
     border-radius: 5px;
     margin-left: 60px;
-    margin-top: 50px;
     margin-bottom: 50px;
 }
 
@@ -385,8 +368,15 @@ textarea{
     bottom: 415px; /* 아래쪽 여백을 줄여 로고를 위로 올림 */
     right: -280px;
     opacity: 0.2;
-    z-index: 99;
+    z-index: -3;
 }
 
+#selectedDate{
+    position:relative;
+    z-index: 10;
+    top: 10px;
+    width: 500px;
+    height: 30px;
+}
   
   
