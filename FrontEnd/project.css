@@ -101,15 +101,13 @@ display: none; }
 }
 
 #studentNumber{
-    display: block;
-    width: 60%; 
+    width: 60%;
     height: 3em;  
     margin: 0 auto;
 }
 
 #studentPassword{
-    display: block;
-    width: 60%; 
+    width: 60%;
     height: 3em;
     margin: 0 auto;
 }
@@ -147,7 +145,6 @@ input[type="password"] {
 
 #login {
     font-family: 'Montserrat', sans-serif;
-    display: inline-block;
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -166,7 +163,6 @@ input[type="password"] {
 
 #logout {
     font-family: 'Montserrat', sans-serif;
-    display: inline-block;
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -332,7 +328,7 @@ input[type="date"]{
     background: url("calender-icon.svg") no-repeat right 16px center / 50px auto;
     font-size: 100%;
     color: #000000;
-
+    height: 50px;
     border:1px solid grey;
     border-radius: 5px;
     margin-left: 60px;

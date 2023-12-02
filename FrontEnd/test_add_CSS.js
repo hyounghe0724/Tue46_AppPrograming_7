@@ -1,10 +1,10 @@
 var selectedDate; // input type= date 의 선택된 value값 저장
-let onlyTextarea;
 var isLogined = localStorage.getItem("studentNumber") !== null;
 var inputStudentNumber = document.querySelector("#studentNumber");
 var inputStudentNumberLable = document.querySelector("#studentNumberLable");
 var inputStudentPassword = document.querySelector("#studentPassword");
 var inputStudentPasswordLable = document.querySelector("#studentPasswordLable");
+let onlyTextarea = document.querySelector("#onlyTextarea");
 var loginBtn = document.querySelector("#login");
 var logoutBtn = document.querySelector("#logout");
 var form = document.querySelector("#memoForm");
@@ -42,8 +42,9 @@ const memoDelete = () => {
         dataType: 'json',
         async:  false,
         success: function (data){
-            alert(data.responseText);
+            read_data_todolist();
             location.reload();
+            alert(data.responseText);
         },
         error: function (e){
             alert(e.responseText);
@@ -59,7 +60,6 @@ function read_data_todolist(){ // 유저 정보랑 같이 보냄, 없으면 retu
         location.reload();
         return;
     }
-    let onlyTextarea = document.querySelector("#onlyTextarea");
     let Temp;
     $.ajax({
         url: 'readMemo.php',
@@ -229,9 +229,10 @@ loginBtn.addEventListener("click", validateStudentNumber);
 window.addEventListener('DOMContentLoaded', function () { // dom load at active function show schedule
     const buttons = document.getElementsByClassName("circle");
     const date = new Date();
+    cssHandler(isLogined);
     read_data_school_schedule(date.getMonth() + 1, buttons[date.getMonth()]);
     // 현재의 달 에맞는 N번쨰 버튼.click(date);
-    cssHandler(isLogined);
+
 });
 inputStudentNumber.addEventListener("keypress", function (event){
     if(event.key === "Enter"){
