@@ -13,21 +13,29 @@
 
     <div class="main-month">
 
+        <div class="arrow">
+        <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+        <svg fill="#D3D3D3" width="50px" height="50px" id="leftsvg" viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg" onclick='moveLeft()'><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/>
+        </svg>
         <div class="wrap" id="circlediv">
-            <div class="scroll__wrap">
-                <button class="circle " onclick="read_data_school_schedule(1, this)">1</button>
-                <button class="circle" onclick="read_data_school_schedule(2, this)">2</button>
-                <button class="circle" onclick="read_data_school_schedule(3, this)">3</button>
-                <button class="circle" onclick="read_data_school_schedule(4, this)">4</button>
-                <button class="circle" onclick="read_data_school_schedule(5, this)">5</button>
-                <button class="circle" onclick="read_data_school_schedule(6, this)">6</button>
-                <button class="circle" onclick="read_data_school_schedule(7, this)">7</button>
-                <button class="circle" onclick="read_data_school_schedule(8, this)">8</button>
-                <button class="circle" onclick="read_data_school_schedule(9, this)">9</button>
-                <button class="circle" onclick="read_data_school_schedule(10, this)">10</button>
-                <button class="circle" onclick="read_data_school_schedule(11, this)">11</button>
-                <button class="circle" onclick="read_data_school_schedule(12, this)">12</button>
+            <div class="scroll__wrap" id="circlescroll">
+                <button class="circle " onclick="read_data_school_schedule(1)">1</button>
+                <button class="circle" onclick="read_data_school_schedule(2)">2</button>
+                <button class="circle" onclick="read_data_school_schedule(3)">3</button>
+                <button class="circle" onclick="read_data_school_schedule(4)">4</button>
+                <button class="circle" onclick="read_data_school_schedule(5)">5</button>
+                <button class="circle" onclick="read_data_school_schedule(6)">6</button>
+                <button class="circle" onclick="read_data_school_schedule(7)">7</button>
+                <button class="circle" onclick="read_data_school_schedule(8)">8</button>
+                <button class="circle" onclick="read_data_school_schedule(9)">9</button>
+                <button class="circle" onclick="read_data_school_schedule(10)">10</button>
+                <button class="circle" onclick="read_data_school_schedule(11)">11</button>
+                <button class="circle active" onclick="read_data_school_schedule(12)">12</button>
             </div>
+        </div>
+        <?xml version="1.0" encoding="utf-8"?>
+        <svg fill="#D3D3D3" width="50px" height="50px" id="rigthsvg"viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg" onclick="moveRight()"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/>
+        </svg>
         </div>
 
         <script>
@@ -43,6 +51,25 @@
         //클릭하면 색상 변경 자바 스크립트 
         </script>
 
+        <script>//달 양옆 화살표 버튼 누르면 부드럽게 스크롤
+        const moveLeft = () => {
+        const circleScroll = document.getElementById('circlescroll');
+        if (circleScroll) {
+            circleScroll.scrollLeft -= circleScroll.offsetWidth;
+            behavior:'smooth';
+        }   
+        };
+
+        const moveRight = () => {
+        const circleScroll = document.getElementById('circlescroll');
+        if (circleScroll) {
+            circleScroll.scrollLeft += circleScroll.offsetWidth;
+            behavior:'smooth';
+        }
+        };
+        </script>
+
+
         <!-- input 에 js함수 만들어야함
         ajax ->  db -> 학번 vaildate 잇으면 localStorage 저장, 없으면 저장 하시겠습니까 alert() 후 저장 ( 학번에 맞는 table 생성 )
 
@@ -57,9 +84,9 @@
 
         <lable id="studentNumberLable">enter your studentNumber</lable><br><br>
         <input id="studentNumber" type="number"><br>
-        <lable id="studentPasswordLable">enter your own password for the password</lable><br><br>
+        <lable id="studentPasswordLable">enter your own password</lable><br><br>
         <input id="studentPassword" type="password"> <br><br>
-        <button id="login" >sign in</button>
+        <button id="login" >log in</button>
         <button id="logout" class="logInLogOutToggle" onclick="logout()">logout</button>
         <a href="createUser.html">sign up</a><br><br>
 
@@ -94,12 +121,12 @@
 
     <div class="main-date">
         <form id="memoForm" action="MemoCreateAndUpdate.php" method="post">
-            <p id="selectedDate"></p>
             <div class="display-flex">
                 <input
                 type="date"
-                id="dateInput"
+                date-placeholder='Select date'
                 onchange="handleDateChange(this.value)"
+                value="날짜를 선택해주세요"
                 name="date" required>
             </div>
             <button type="button" class="small-button right-align"
@@ -117,10 +144,10 @@
                 onclick="memoDelete()"
                 value="메모 전체 삭제" >
 
-                <input id ="formBtn" class="small-button  right-align" type="button"  value="메모 저장">
+                <input id ="formBtn" class="sm small-button right-align" type="button"  value="메모 저장">
 
             </div>
-            <img src="https://drive.google.com=view&id=1fIB9bQ08ts8D5KkV4XwoydmYPxnba5WW" alt="Sungkyul University Logo" class="logo">
+            <img src="https://drive.google.com =view&id=1fIB9bQ08ts8D5KkV4XwoydmYPxnba5WW" alt="Sungkyul University Logo" class="logo">
 
 
         </form>
