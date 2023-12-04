@@ -43,8 +43,8 @@ const memoDelete = () => {
         async:  false,
         success: function (data){
             read_data_todolist();
-            location.reload();
             alert(data.responseText);
+            location.reload();
         },
         error: function (e){
             alert(e.responseText);
