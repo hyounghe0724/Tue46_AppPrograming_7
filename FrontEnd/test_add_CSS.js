@@ -42,15 +42,16 @@ const memoDelete = () => {
         dataType: 'json',
         async:  false,
         success: function (data){
-            read_data_todolist();
+            //read_data_todolist();
             alert(data.responseText);
-            location.reload();
         },
         error: function (e){
             alert(e.responseText);
         }
 
     });
+    location.reload();
+
 }
 
 
