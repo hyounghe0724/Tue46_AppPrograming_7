@@ -183,7 +183,6 @@ const read_data_school_schedule = (month, button) => { // html parsing and ajax 
 const handleDateChange = (date) => {
     if ( date !== undefined ){
         selectedDate = date;
-        document.getElementById("selectedDate").textContent = "선택한 날짜: " + selectedDate;
         read_data_todolist(selectedDate);
     }
 }
