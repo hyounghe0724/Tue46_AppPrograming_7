@@ -36,10 +36,7 @@ if(!$studentNumber) {
 }
 
 if ($result->num_rows < 1) {
-    echo "<script>
-          alert('날짜 정보가 없습니다');
-          location.href = 'test_add_CSS.html';
-        </script>";
+    echo "메모 정보가 없습니다";
 } else {
     $deleteSql = "DELETE FROM memo WHERE date = '$date' AND studentNumber = $studentNumber";
     if ($conn->query($deleteSql)) {
